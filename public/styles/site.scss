@@ -1,0 +1,151 @@
+// Bootstrap
+// =========
+
+// Bootstrap can be removed entirely by deleting this line.
+
+@import "bootstrap/bootstrap";
+
+// The easiest way to customise Bootstrap variables while
+// being able to easily override the source files with new
+// versions is to override the ones you want in another file.
+//
+// You can also add your own custom variables to this file for
+// use in your site stylesheets.
+
+@import "site/variables";
+
+
+// Site Styles
+// ===========
+
+// Add your own site style includes here
+@import "site/layout";
+
+html {
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 70px;
+}
+body {
+  background-color: rgb(212,169,114);
+}
+#header div[role="navigation"] {
+  background-color: rgb(245,212,159);
+}
+footer {
+  width: 100%;
+  background-color: rgb(245,212,159);
+  position: absolute;
+  bottom: 0;
+}
+footer address {
+  margin-top: 7px;
+  display: inline-block;
+}
+footer img {
+  margin: 10px 7px 0 0;
+  float: right;
+  display: inline-block;
+}
+h2,h1,h3,h4,h5,h6,a,p{
+    color:black;
+}
+
+button{
+    background-color: rgb(245,212,159);
+}
+
+// body{
+//     position: relative;
+//     background-color: rgb(212,169,114);
+//     padding-bottom: 60px;
+// }
+//
+// /* Introduction Part */
+//
+// .introBox {
+//   float: right;
+//   height: inherit;
+//   max-width: 600px;
+//   margin-right: 3%;
+// }
+// .introBox .tit {
+//   text-align: center;
+//   padding: 3%;
+//   background-color: #312c2c;
+//   color: rgb(195,137,74);
+//   font-size: 4em;
+//   margin-bottom: 7px;
+// }
+// .introBox .content {
+//   text-align: center;
+//   padding: 1%;
+//   color: #312c2c;
+//   background-color: rgb(235,210,188);
+//   font-size: 1.5em;
+// }
+// .navbar-default {
+//     background-color: rgb(245,212,159);
+//     border-bottom: 2px solid orange;
+//  }
+//
+// .jumbotron {
+//     background-color: rgb(245,212,159);
+//
+// }
+//
+//  /* footer */
+//
+//  footer {
+//      position: absolute;
+//      color: #312c2c;
+//      bottom: 0;
+//      left: 0;
+//      right: 0;
+//      border-top: 2px solid orange;
+//      min-height: 65px;
+//      width: 100%;
+//      background-color: rgb(245, 212, 159);
+//  }
+//
+//  /* Left Addresses */
+//
+//  address {
+//      position: absolute;
+//      line-height: 1.2em;
+//      margin-top: 12px;
+//      margin-left: 10px;
+//      margin-bottom: 0;
+//  }
+//
+//  address a {
+//      text-decoration: none;
+//      color: #312c2c;
+//  }
+//
+//  address a:hover {
+//      text-decoration: none;
+//      color: #312c2c;
+//  }
+//
+//  /* Right Linking Buttons */
+//
+//  footer img {
+//      float: right;
+//      margin-top: 1em;
+//      margin-right: 1em;
+//  }
+//
+//  /* Responsive */
+//
+//  @media (max-width:1186px) {
+//      .login {
+//          display: none;
+//      }
+//  }
+//
+//  @media (max-width:530px) {
+//      footer img {
+//          display: none;
+//      }
+//  }

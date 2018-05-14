@@ -1,0 +1,87 @@
+<div class="container">
+	<h1>Liên Hệ Chúng Tôi</h1>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8 col-md-6">
+			{{#if enquirySubmitted}}
+			<h3>Xin cảm ơn, chúng tôi sẽ tiếp nhận ý kiến của bạn.</h3>
+			{{else}}
+			<form method="post">
+				<input type="hidden" name="action" value="contact">
+				<div class="form-group {{#if validationErrors.name}}has-error{{/if}}">
+					<label>Họ và Tên</label>
+					<input type="text" name="name.full"  class="form-control" value="{{formData.[name.full]}}">
+				</div>
+				<div class="form-group {{#if validationErrors.email}}has-error{{/if}}">
+					<label>Email</label>
+					<input type="email" name="email" class="form-control" value="{{formData.email}}">
+				</div>
+				<div class="form-group">
+					<label>Số Điện Thoại</label>
+					<input type="text" name="phone" placeholder="(optional)" class="form-control" value="{{formData.phone}}">
+				</div>
+				<div class="form-group {{#if validationErrors.enquiryType}}has-error{{/if}}">
+					<label>Bạn muốn liên lạc với chúng tôi về điều ?</label>
+					<select name="enquiryType" class="form-control">
+						<option value="">(select one)</option>
+						{{#each enquiryTypes}}
+						<option value="{{value}}">{{label}}</option>
+						{{/each}}
+					</select>
+				</div>
+				<div class="form-group {{#if validationErrors.message}}has-error{{/if}} ">
+					<label>Lời Nhắn:</label>
+					<textarea name="message" placeholder="Lời Nhắn Của Bạn" rows="4" class="form-control">{{formData.message}}</textarea>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary" style="background-color: rgb(245,212,159); color:black">Send</button>
+				</div>
+			</form>
+			{{/if}}
+		</div>
+	</div>
+</div>
+<style type="text/css">
+  .subCB {
+    background-color: rgb(245,212,159);
+    padding: 1%;
+    margin-bottom: 3%;
+    border-radius: 6px;
+  }
+</style>
+<!-- <div class="container-fluid" id="bodyPage">
+  <img class="bodyBg" src="style\images\house.png" />
+  <div class="container">
+	<strong>MỌI THẮC MẮC XIN VUI LÒNG LIÊN HỆ VỚI CHÚNG TÔI</strong><br /><br />
+	<form class="form-group">
+    <div class="row">
+	  <div class="col-sm-6">
+	     <div class="subCB">
+		       <label for="fullName">Họ và tên:</label><br />
+		       <input class="form-control" type="text" id="fullName" placeholder="Nhập họ và tên của bạn..." />
+	     </div>
+	     <div class="subCB">
+		       <label for="mail">Email:<span style="color:red;">*</span></label><br />
+		       <input class="form-control" type="email" id="mail" placeholder="Nhập email của bạn..." required autofocus/>
+	     </div>
+	     <div class="subCB">
+		       <label for="phone">Số điện thoại:</label><br />
+		       <input class="form-control" type="tel" id="phone" placeholder="Nhập số điện thoại của bạn..." />
+	     </div>
+	  </div>
+	  <div class="col-sm-6">
+	     <div class="subCB">
+		       <label for="titlecnt">Tiêu đề:</label><br />
+		       <input class="form-control" type="text" id="titlecnt" placeholder="Nhập tiêu đề phản hồi của bạn..." />
+	     </div>
+	     <div class="subCB">
+		       <label for="comment">Phản hồi:<span style="color:red">*</span></label><br />
+		       <textarea class="form-control" id="comment" placeholder="Nhập phản hồi của bạn..." required></textarea>
+	     </div>
+	  <input class="btn btn-warning" type="submit" value="Gửi phản hồi" />
+	  </div>
+    </div>
+	</form>
+  </div>
+</div> -->

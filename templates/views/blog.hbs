@@ -1,0 +1,43 @@
+<style>
+	
+</style>
+
+<div class="container">
+	<h1>Tin Tức</h1>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8 col-md-9">
+			<h4 class="text-weight-normal">Đang hiển thị {{ data.posts.results.length}} bài đăng.</h4>
+			<div class="jumbotron" style="background-color: rgb(245,212,159);">
+				<div class="blog">
+					{{# each data.posts.results}}
+						<div data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}" class="post">
+							<h2><a href="{{postUrl slug}}">{{{title}}}</a></h2>
+							<p class="lead text-muted">{{{categoryList categories prefix="Mục "}}}
+								{{#if author.name.first}}bởi {{author.name.first}}{{/if}}
+							</p>
+
+							{{#if image}}<img src="{{{cloudinaryUrl image width=160 height=160 crop='fit' }}}" class="img pull-right">{{/if}}
+
+							<p>{{{content.brief}}}</p>
+							{{#if content.extended}}
+								<p class="read-more"><a href="{{postUrl slug}}">Đọc thêm</a></p>
+							{{/if}}
+						</div>
+						{{/each}}
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4 col-md-3">
+			<h2>Thể Loại</h2>
+			<div style="margin-top: 70px;  " class="list-group">
+				<a href="/blog" class="active list-group-item" style="background-color: rgb(245,212,159);, color:black;">Các Kiểu</a>
+				{{# each data.categories }}
+					<a href="{{categoryUrl key}}" class="false list-group-item">{{name}}</a>
+					{{/each}}
+			</div>
+		</div>
+	</div>
+	{{>pagination}}
+</div>

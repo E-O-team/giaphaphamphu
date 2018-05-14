@@ -1,0 +1,247 @@
+<style type="text/css">
+	.flex-container {
+		padding-top: 35px;
+		border-top: 4px solid black;
+		display: flex;
+		justify-content: center;
+	}
+  .flex-container > div {
+    padding: 5px;
+  }
+	.lineUp {
+		border-left: 4px solid black;
+		position: absolute;
+		top:-40px;
+		right: 0;
+		width: 50%;
+		height: 40px;
+	}
+	.lineDown {
+		border-left: 4px solid black;
+		position: absolute;
+		bottom:-40px;
+		right: 0;
+		width: 50%;
+		height: 40px;
+	}
+  .card {
+  	position: relative;
+		margin: auto;
+		margin-bottom: 36px;
+	}
+</style>
+<!-- Person -->
+<div class="container ">
+	<div class="row">
+		<div class="jumbotron" style="background-color: rgb(245,212,159);">
+			<div class="row">
+				<div class="col-lg-4">
+					<img src="{{{cloudinaryUrl image width="200" height="200" }}}" />
+				</div>
+				<div class="col-lg-8">
+					<h3>Họ và tên: {{data.person.fullName}}</h3>
+					<h4>Ngày sinh: {{data.person.birth}}</h4>
+					<h4>Đời: {{data.person.generation}}</h4>
+					<h4>Thông tin chi tiết:</h4>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu ornare tellus. Phasellus gravida leo dictum sodales faucibus. Maecenas sodales dui vel est luctus tincidunt. Nullam ac cursus mauris. Donec sed eros non velit pharetra rhoncus vel nec mauris.
+						Nulla ultrices felis turpis. Nunc consectetur mi sit amet neque elementum, eu laoreet risus aliquam. Maecenas fermentum commodo tempus. Cras vehicula aliquam sapien auctor convallis. Pellentesque habitant morbi tristique senectus et netus et malesuada
+						fames ac turpis egestas.
+					</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- <img src="{{{cloudinaryUrl data.person.image width="60" height="80" }}}", class="thumbnail" /> -->
+<div class="row">
+	<!-- phat -->
+
+	<div class="container-fluid">
+		<div style="position:relative">
+		<h1 class="text-center" style="margin-bottom:36px">{{data.person.fullName}}</h1>
+
+		<!-- Đời 2 -->
+		{{#if data.person.children}}
+		<div class="lineDown">
+		</div>
+		</div>
+			<!-- <canvas id="1-2" width="50" height="80">Trình duyệt không hỗ trợ hình vẽ</canvas> -->
+			<div class="flex-container text-center">
+				{{#each data.person.children}}
+					<div>
+						<div class="card" style="width:60px">
+							<div class="lineUp">
+							</div>
+							{{#if this.children}}
+							<div class="lineDown">
+							</div>
+							{{/if}}
+							{{#if this.image}}
+								<img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" />
+							{{/if}}
+							<div class="card-body">
+								<a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
+							</div>
+						</div>
+
+						<!-- Đời 3 -->
+
+						{{#if this.children}}
+							<!-- <canvas class="2-3" width="50" height="80">Trình duyệt không hỗ trợ hình vẽ</canvas> -->
+							<div class="flex-container text-center">
+								{{#each this.children}}
+									<div>
+										<div class="card" style="width:60px">
+											<div class="lineUp">
+											</div>
+											{{#if this.children}}
+											<div class="lineDown">
+											</div>
+											{{/if}}
+											{{#if this.image}}
+												<img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" />
+											{{/if}}
+											<div class="card-body">
+												<a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
+											</div>
+										</div>
+
+										<!-- Đời 4 -->
+
+										{{#if this.children}}
+											<!-- <canvas class="3-4" width="50" height="80">Trình duyệt không hỗ trợ hình vẽ</canvas> -->
+											<div class="flex-container text-center">
+												{{#each this.children}}
+													<div>
+														<div class="card" style="width:60px">
+															<div class="lineUp">
+															</div>
+															{{#if this.children}}
+															<div class="lineDown">
+															</div>
+															{{/if}}
+															{{#if this.image}}
+																<img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" />
+															{{/if}}
+															<div class="card-body">
+																<a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
+															</div>
+														</div>
+
+														<!-- Đời 5 -->
+
+														{{#if this.children}}
+															<!-- <canvas class="4-5" width="50" height="80">Trình duyệt không hỗ trợ hình vẽ</canvas> -->
+															<div class="flex-container text-center">
+																{{#each this.children}}
+																	<div>
+																		<div class="card" style="width:60px">
+																			<div class="lineUp">
+																			</div>
+																			{{#if this.image}}
+																				<img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" />
+																			{{/if}}
+																			<div class="card-body">
+																				<a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
+																			</div>
+																		</div>
+																	</div>
+																{{/each}}
+															</div>
+														{{/if}}
+													</div>
+												{{/each}}
+											</div>
+										{{/if}}
+									</div>
+								{{/each}}
+							</div>
+						{{/if}}
+					</div>
+				{{/each}}
+			</div>
+		{{/if}}
+	</div>
+</div>
+
+
+
+<!-- <script>
+	var cv12 = document.getElementById("1-2");
+	var pw12 = cv12.parentElement.clientWidth;
+  cv12.width = pw12;
+	var dr12 = cv12.getContext("2d");
+  dr12.lineWidth=5;
+	dr12.moveTo(pw12/2,0);
+  dr12.lineTo(pw12/2,cv12.height/2);
+  dr12.stroke();
+
+  var fl = document.getElementsByClassName("flex-container text-center");
+
+	var cv23 = document.getElementsByClassName("2-3");
+	var pw23 = [];
+	for (var i = 0; i < cv23.length; i++) { 																				// Canvas
+    pw23[i] = cv23[i].parentElement.clientWidth;
+    cv23[i].width = pw23[i];
+    for(var j=0;j<fl.children;j++){																								//Cards
+      var left = fl[i].chilren[j].getBoundingClientRect().x + fl[i].chilren[j].clientWidth/2;
+			dr12.moveTo(left,80);
+			dr12.lineTo(left,cv12.height/2);
+			dr12.stroke();
+    }
+
+	}
+	var cv34 = document.getElementsByClassName("3-4");
+	var pw34 = [];
+	for (var i = 0; i < cv34.length; i++) {
+    pw34[i] = cv34[i].parentElement.clientWidth;
+		cv34[i].width = pw34[i];
+
+  }
+	var cv45 = document.getElementsByClassName("4-5");
+	var pw45 = [];
+	for (var i = 0; i < cv45.length; i++) {
+    pw45[i] = cv45[i].parentElement.clientWidth;
+		cv45[i].width = pw45[i];
+
+  }
+</script> -->
+
+
+
+
+
+
+
+<!-- Family Tree -->
+<!-- <div class="container">
+    {{#each data.person.children}}
+    <div class="row">
+        <div class="col-lg-2">
+                <h2>{{this.fullName}}</h2>
+                {{#each this.children}}
+                <div class="row">
+                    <div class="col-lg-2">
+                        <h2>{{this.fullName}}</h2>
+                    </div>
+                </div>
+                {{/each}}
+        </div>
+    </div>
+    {{/each}}
+</div> -->
+
+
+<!-- <div class='container'>
+    {{# each people}}
+        <div class='col-md-2 col-lg-2'>
+            <h4><a href="{{personUrl slug}}">{{fullName}} {{@key}}</a></h4>
+            {{# if image}}
+                <img src="{{{cloudinaryUrl image width="60" height="80" }}}" class="thumbnail" />
+            {{/if}}
+        </div>
+    {{/each}}
+</div> -->
