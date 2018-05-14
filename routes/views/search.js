@@ -1,12 +1,6 @@
 var keystone = require('keystone');
 var async = require('async');
 
-var getPerson=function (person, callback) {
-    keystone.list('Person').model.find().where('father', person.id).exec(function(err, person) {
-        callback(person);
-    })
-}
-
 exports = module.exports = function (req, res) {
 
     var view = new keystone.View(req, res);
@@ -22,20 +16,31 @@ exports = module.exports = function (req, res) {
         q: req.params.q,
     };
 
-    // Load people
-    view.on('init', function(next) {
-        var q = keystone.list('Person').model.findOne({
-            slug: locals.filters.person
-        });
-        q.exec(function(err, person) {
-            locals.data.person = person;
-            getPerson(person);
-
-
-            // console.log(person);
+    view.on('init', function (next) {
+        var q = keystone.list('Person').paginate({
+            filters: {
+                fullName: { $regex: locals.filters.q , $options: 'i'},
+            },
+        })
+        q.exec(function (err, results) {
+            locals.data.people = results;
+            console.log(locals.data.people);
             next(err);
         });
+
     });
+
+    // view.on('init', function (next) {
+    //   var q = keystone.list('Person').model.find().where('fullName', '$regex: locals.filters.q');
+    //   q.exec(function (err, results) {
+    //       console.log(results);
+    //       locals.data.people = results;
+    //       next(err);
+    //   });
+    //
+    // });
+
+
     // Render the view
     view.render('search');
 };
