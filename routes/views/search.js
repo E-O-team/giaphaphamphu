@@ -6,6 +6,7 @@ exports = module.exports = function (req, res) {
     var view = new keystone.View(req, res);
     var locals = res.locals;
 
+
     // Init locals
     locals.section = req.params.q;
     locals.filters = {
@@ -17,9 +18,10 @@ exports = module.exports = function (req, res) {
     };
 
     view.on('init', function (next) {
+
         var q = keystone.list('Person').paginate({
             filters: {
-                fullName: { $regex: locals.filters.q , $options: 'i'},
+                slug: { $regex: locals.filters.q , $options: 'i'},
             },
         })
         q.exec(function (err, results) {
