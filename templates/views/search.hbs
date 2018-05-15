@@ -1,5 +1,5 @@
 <div class='container'>
-    {{# each people}}
+    {{# each data.people.results}}
         <div class='col-md-2 col-lg-2'>
             <h4><a href="{{personUrl slug}}">{{fullName}} {{@key}}</a></h4>
             <h4>{{a}}</h4>
@@ -10,6 +10,4 @@
 
         </div>
     {{/each}}
-
-    <h1>{{data}}</h1>
 </div>

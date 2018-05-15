@@ -8,7 +8,7 @@ exports = module.exports = function (req, res) {
 
 
     // Init locals
-    locals.section = req.params.q;
+    locals.section = 'req.params.q';
     locals.filters = {
         q: req.params.q,
     };
