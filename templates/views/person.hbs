@@ -1,9 +1,8 @@
 <style type="text/css">
 	.flex-container {
+		overflow:auto;
 		padding-top: 35px;
-		border-top: 4px solid black;
 		display: flex;
-		justify-content: center;
 	}
   .flex-container > div {
     padding: 5px;
@@ -29,14 +28,48 @@
 		margin: auto;
 		margin-bottom: 36px;
 	}
+	.card-img-top{
+		width: 99%;
+		border-radius: 50%;
+	}
+	.card-wrapper{
+		flex-grow: 1;
+		position: relative;
+	}
+	.card-body h5 {
+		font-weight: bold;
+	}
+	.flex-container > .card-wrapper:first-child > .horBorder {
+		width: 51%;
+		border-top: 4px solid black;
+		position: absolute;
+		top: -35px;
+		left:50%;
+	}
+	.flex-container > .card-wrapper:last-child > .horBorder {
+		width: 50%;
+		border-top: 4px solid black;
+		position: absolute;
+		top: -35px;
+		right:50%;
+	}
+	.flex-container > .card-wrapper:only-child > .horBorder {
+		width: 0;
+	}
+	.flex-container > .card-wrapper > .horBorder {
+		border-top: 4px solid black;
+		position: absolute;
+		width: 100%;
+		top: -35px;
+		left:0;
+	}
 </style>
 <!-- Person -->
-<div class="container ">
-	<div class="row">
+<div class="container">
 		<div class="jumbotron" style="background-color: rgb(245,212,159);">
 			<div class="row">
 				<div class="col-lg-4">
-					<img src="{{{cloudinaryUrl image width="200" height="200" }}}" />
+					<img src="{{{cloudinaryUrl image width="180px" height="180px" }}}" />
 				</div>
 				<div class="col-lg-8">
 					<h3>Họ và tên: {{data.person.fullName}}</h3>
@@ -52,26 +85,24 @@
 				</div>
 			</div>
 		</div>
-	</div>
 
 </div>
 <!-- <img src="{{{cloudinaryUrl data.person.image width="60" height="80" }}}", class="thumbnail" /> -->
-<div class="row">
 	<!-- phat -->
 
-	<div class="container-fluid">
+	<div class="container-fluid" style="position:relative">
 		<div style="position:relative">
-		<h1 class="text-center" style="margin-bottom:36px">{{data.person.fullName}}</h1>
+		<h1 class="text-center" style="margin-bottom:36px;"><strong>{{data.person.fullName}}</strong></h1>
 
 		<!-- Đời 2 -->
 		{{#if data.person.children}}
-		<div class="lineDown">
-		</div>
+		<div class="lineDown"></div>
 		</div>
 			<!-- <canvas id="1-2" width="50" height="80">Trình duyệt không hỗ trợ hình vẽ</canvas> -->
 			<div class="flex-container text-center">
 				{{#each data.person.children}}
-					<div>
+					<div class="card-wrapper">
+						<div class="horBorder"></div>
 						<div class="card" style="width:60px">
 							<div class="lineUp">
 							</div>
@@ -80,7 +111,7 @@
 							</div>
 							{{/if}}
 							{{#if this.image}}
-								<img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" />
+								<img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="60" }}}' alt="person" />
 							{{/if}}
 							<div class="card-body">
 								<a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
@@ -93,7 +124,8 @@
 							<!-- <canvas class="2-3" width="50" height="80">Trình duyệt không hỗ trợ hình vẽ</canvas> -->
 							<div class="flex-container text-center">
 								{{#each this.children}}
-									<div>
+									<div class="card-wrapper">
+										<div class="horBorder"></div>
 										<div class="card" style="width:60px">
 											<div class="lineUp">
 											</div>
@@ -102,7 +134,7 @@
 											</div>
 											{{/if}}
 											{{#if this.image}}
-												<img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" />
+												<img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="60" }}}' alt="person" />
 											{{/if}}
 											<div class="card-body">
 												<a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
@@ -115,7 +147,8 @@
 											<!-- <canvas class="3-4" width="50" height="80">Trình duyệt không hỗ trợ hình vẽ</canvas> -->
 											<div class="flex-container text-center">
 												{{#each this.children}}
-													<div>
+													<div class="card-wrapper">
+														<div class="horBorder"></div>
 														<div class="card" style="width:60px">
 															<div class="lineUp">
 															</div>
@@ -124,7 +157,7 @@
 															</div>
 															{{/if}}
 															{{#if this.image}}
-																<img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" />
+																<img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="60" }}}' alt="person" />
 															{{/if}}
 															<div class="card-body">
 																<a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
@@ -137,12 +170,13 @@
 															<!-- <canvas class="4-5" width="50" height="80">Trình duyệt không hỗ trợ hình vẽ</canvas> -->
 															<div class="flex-container text-center">
 																{{#each this.children}}
-																	<div>
+																	<div class="card-wrapper">
+																		<div class="horBorder"></div>
 																		<div class="card" style="width:60px">
 																			<div class="lineUp">
 																			</div>
 																			{{#if this.image}}
-																				<img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" />
+																				<img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="60" }}}' alt="person" />
 																			{{/if}}
 																			<div class="card-body">
 																				<a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
@@ -165,7 +199,6 @@
 			</div>
 		{{/if}}
 	</div>
-</div>
 
 
 
@@ -178,9 +211,7 @@
 	dr12.moveTo(pw12/2,0);
   dr12.lineTo(pw12/2,cv12.height/2);
   dr12.stroke();
-
   var fl = document.getElementsByClassName("flex-container text-center");
-
 	var cv23 = document.getElementsByClassName("2-3");
 	var pw23 = [];
 	for (var i = 0; i < cv23.length; i++) { 																				// Canvas
@@ -192,21 +223,18 @@
 			dr12.lineTo(left,cv12.height/2);
 			dr12.stroke();
     }
-
 	}
 	var cv34 = document.getElementsByClassName("3-4");
 	var pw34 = [];
 	for (var i = 0; i < cv34.length; i++) {
     pw34[i] = cv34[i].parentElement.clientWidth;
 		cv34[i].width = pw34[i];
-
   }
 	var cv45 = document.getElementsByClassName("4-5");
 	var pw45 = [];
 	for (var i = 0; i < cv45.length; i++) {
     pw45[i] = cv45[i].parentElement.clientWidth;
 		cv45[i].width = pw45[i];
-
   }
 </script> -->
 
