@@ -58,7 +58,7 @@ exports = module.exports = function(req, res) {
 															if (isNotEmpty(person.children[i].children[j].children[k])){
 																getChildren(person.children[i].children[j].children[k],function(children){
 																	person.children[i].children[j].children[k].children=children;
-																	console.log(person.children[i].children[j].children[k].children);
+																	// console.log(person.children[i].children[j].children[k].children);
 																})
 															}
 														}(k);
