@@ -1,37 +1,4 @@
 
-
-<!-- <div class='container'>
-    <div class="form-group">
-        <label>Name</label>
-        <form>
-        <input id="name" type="text"  class="form-control" placeholder="Họ và tên">
-        <input onclick="return person()" class="btn btn-warning" value="Gửi phản hồi"/>
-        </form>
-    </div>
-</div> -->
-
-<!-- <div class="container">
-    <form class="search-form">
-        <input id="name" class="form-control" type="text" placeholder="Search">
-    </form>
-</div> -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-    function person(){
-        var q=document.getElementById('name').value
-        var redirect = "/search/" + q;
-        window.location.replace(redirect);
-        retufn false;
-    }
-    $( document ).ready(function() {
-    $('.search-form').on('submit', function () {
-        var q = this.firstElementChild.value;
-        var redirect = "/search/" + q;
-        window.location.href = redirect;
-        return false;
-    });
-});
-</script> -->
-
 <script>
     function change_alias(alias) {
     var str = alias;
@@ -78,15 +45,6 @@
     }
 </script>
 
-
-
-
-<!-- {{#if person}}
-    {{#each people}}
-        {{@fullName}}: <h1>{{this}}</h1>
-    {{/each}}
-{{/if}} -->
-
 <div class='container'>
     {{# each people}}
         <div class='col-md-2 col-lg-2'>
@@ -100,23 +58,3 @@
         </div>
     {{/each}}
 </div>
-
-<!-- <div class='container'>
-    {{# each people}}
-        {{#ifEquals fullName person1 }}
-        <div class='col-md-2 col-lg-2'>
-            <h4><a href="{{personUrl slug}}">{{fullName}} {{@key}}</a></h4>
-            <h4>{{a}}</h4>
-            {{# if image}}
-                <img src="{{{cloudinaryUrl image width="60" height="80" }}}" class="thumbnail" />
-            {{else}}<img src="/public/images/anonimo" />
-            {{/if}}
-        </div>
-        {{/ifEquals}}
-    {{/each}}
-
-</div> -->
-
-<!-- {{#ifEquals sampleString "This is a string"}}
-    Your HTML here
-{{/ifEquals}} -->

@@ -1,20 +1,24 @@
 <style type="text/css">
+/* khung chứa mỗi đối tượng cha + con +... */
 	.flex-container {
 		overflow:auto;
 		padding-top: 35px;
 		display: flex;
 	}
+	/* khung chứ đối tượng con+con... */
   .flex-container > div {
     padding: 5px;
   }
+	/* đường thẳng vẻ lên trên khung chứa */
 	.lineUp {
 		border-left: 4px solid black;
 		position: absolute;
-		top:-40px;
+		top:-42px;
 		right: 0;
 		width: 50%;
 		height: 40px;
 	}
+	/* đường thẳng vẽ xuống dưới khung chứa */
 	.lineDown {
 		border-left: 4px solid black;
 		position: absolute;
@@ -23,22 +27,34 @@
 		width: 50%;
 		height: 40px;
 	}
+	/* mỗi ô đối tượng */
   .card {
+  	transition: background-color 0.6s;
+		-webkit-transition: background-color 0.6s;
+  	border: 2px solid #f5d49f;
+		border-radius: 3px;
   	position: relative;
 		margin: auto;
 		margin-bottom: 36px;
 	}
+	/* ô đối tượng khi trỏ vào */
+	.card:hover {
+		background-color: #f5d49f;
+	}
+	/* ảnh trong ô đối tương */
 	.card-img-top{
 		width: 99%;
-		border-radius: 50%;
 	}
+	/* khung chứa ô đối tượng để giúp giãn độ dài, tính toán kẻ đường ngang */
 	.card-wrapper{
 		flex-grow: 1;
 		position: relative;
 	}
+	/* tên đối tượng */
 	.card-body h5 {
 		font-weight: bold;
 	}
+	/* kẻ đường ngang sang phải cho đối tượng con đầu tiên của 1 đối tượng cha */
 	.flex-container > .card-wrapper:first-child > .horBorder {
 		width: 51%;
 		border-top: 4px solid black;
@@ -46,16 +62,19 @@
 		top: -35px;
 		left:50%;
 	}
+	/* kẻ đường ngang sang trái cho đối tượng con đầu tiên của 1 đối tượng cha */
 	.flex-container > .card-wrapper:last-child > .horBorder {
-		width: 50%;
+		width: 50.6%;
 		border-top: 4px solid black;
 		position: absolute;
 		top: -35px;
 		right:50%;
 	}
+	/* nếu chỉ có 1 con thì ko kẻ đường ngang */
 	.flex-container > .card-wrapper:only-child > .horBorder {
 		width: 0;
 	}
+	/* kẻ đường ngang cho các đối tượng con ở giữa */
 	.flex-container > .card-wrapper > .horBorder {
 		border-top: 4px solid black;
 		position: absolute;
@@ -65,9 +84,8 @@
 	}
 </style>
 <!-- Person -->
-<!-- PHAT'SHIT -->
 <div class="container">
-		<div class="jumbotron" style="background-color: rgb(245,212,159);">
+		<div class="jumbotron" style="background-color: rgb(245,212,159); padding:10px;">
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 					{{#if data.person.image}}
@@ -80,14 +98,10 @@
 					<h4>Đời: {{data.person.generation}}</h4>
 					<h4>Thông tin chi tiết:</h4>
 					{{{data.person.information}}}
-
 				</div>
 			</div>
 		</div>
-
 </div>
-<!-- <img src="{{{cloudinaryUrl data.person.image width="60" height="80" }}}", class="thumbnail" /> -->
-	<!-- phat -->
 
 	<div class="container-fluid" style="position:relative">
 		<div style="position:relative">
@@ -110,7 +124,7 @@
 							</div>
 							{{/if}}
 							{{#if this.image}}
-								<img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="60" }}}' alt="person" />
+								<a href="{{personUrl slug}}"><img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" /></a>
 							{{/if}}
 							<div class="card-body">
 								<a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
@@ -133,7 +147,7 @@
 											</div>
 											{{/if}}
 											{{#if this.image}}
-												<img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="60" }}}' alt="person" />
+												<a href="{{personUrl slug}}"><img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" /></a>
 											{{/if}}
 											<div class="card-body">
 												<a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
@@ -156,7 +170,7 @@
 															</div>
 															{{/if}}
 															{{#if this.image}}
-																<img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="60" }}}' alt="person" />
+																<a href="{{personUrl slug}}"><img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" /></a>
 															{{/if}}
 															<div class="card-body">
 																<a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
@@ -175,7 +189,7 @@
 																			<div class="lineUp">
 																			</div>
 																			{{#if this.image}}
-																				<img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="60" }}}' alt="person" />
+																				<a href="{{personUrl slug}}"><img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" /></a>
 																			{{/if}}
 																			<div class="card-body">
 																				<a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
@@ -198,77 +212,3 @@
 			</div>
 		{{/if}}
 	</div>
-
-
-
-<!-- <script>
-	var cv12 = document.getElementById("1-2");
-	var pw12 = cv12.parentElement.clientWidth;
-  cv12.width = pw12;
-	var dr12 = cv12.getContext("2d");
-  dr12.lineWidth=5;
-	dr12.moveTo(pw12/2,0);
-  dr12.lineTo(pw12/2,cv12.height/2);
-  dr12.stroke();
-  var fl = document.getElementsByClassName("flex-container text-center");
-	var cv23 = document.getElementsByClassName("2-3");
-	var pw23 = [];
-	for (var i = 0; i < cv23.length; i++) { 																				// Canvas
-    pw23[i] = cv23[i].parentElement.clientWidth;
-    cv23[i].width = pw23[i];
-    for(var j=0;j<fl.children;j++){																								//Cards
-      var left = fl[i].chilren[j].getBoundingClientRect().x + fl[i].chilren[j].clientWidth/2;
-			dr12.moveTo(left,80);
-			dr12.lineTo(left,cv12.height/2);
-			dr12.stroke();
-    }
-	}
-	var cv34 = document.getElementsByClassName("3-4");
-	var pw34 = [];
-	for (var i = 0; i < cv34.length; i++) {
-    pw34[i] = cv34[i].parentElement.clientWidth;
-		cv34[i].width = pw34[i];
-  }
-	var cv45 = document.getElementsByClassName("4-5");
-	var pw45 = [];
-	for (var i = 0; i < cv45.length; i++) {
-    pw45[i] = cv45[i].parentElement.clientWidth;
-		cv45[i].width = pw45[i];
-  }
-</script> -->
-
-
-
-
-
-
-
-<!-- Family Tree -->
-<!-- <div class="container">
-    {{#each data.person.children}}
-    <div class="row">
-        <div class="col-lg-2">
-                <h2>{{this.fullName}}</h2>
-                {{#each this.children}}
-                <div class="row">
-                    <div class="col-lg-2">
-                        <h2>{{this.fullName}}</h2>
-                    </div>
-                </div>
-                {{/each}}
-        </div>
-    </div>
-    {{/each}}
-</div> -->
-
-
-<!-- <div class='container'>
-    {{# each people}}
-        <div class='col-md-2 col-lg-2'>
-            <h4><a href="{{personUrl slug}}">{{fullName}} {{@key}}</a></h4>
-            {{# if image}}
-                <img src="{{{cloudinaryUrl image width="60" height="80" }}}" class="thumbnail" />
-            {{/if}}
-        </div>
-    {{/each}}
-</div> -->
