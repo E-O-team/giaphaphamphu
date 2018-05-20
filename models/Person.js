@@ -13,7 +13,7 @@ Person.add({
     fullName: { type: String, initial:true, required: true,label: 'Họ và tên', index:true,  },
     birth: {type: Date, label: 'Ngày sinh'},
     father: {type: Types.Relationship, ref:'Person', label: 'Cha'},
-    // gender: {type: String, Label:'Giới Tính'},
+    information: { type: Types.Html, wysiwyg: true, height: 150 },
 	image: {type: Types.CloudinaryImage, label: 'Ảnh'},
     generation: {type: Number, label: 'Đời'},
 });

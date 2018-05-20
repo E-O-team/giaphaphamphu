@@ -65,22 +65,21 @@
 	}
 </style>
 <!-- Person -->
+<!-- PHAT'SHIT -->
 <div class="container">
 		<div class="jumbotron" style="background-color: rgb(245,212,159);">
 			<div class="row">
-				<div class="col-lg-4">
-					<img src="{{{cloudinaryUrl image width="180px" height="180px" }}}" />
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+					{{#if data.person.image}}
+					<img src="{{cloudinaryUrl data.person.image crop='fit' }}" class="img-responsive"/>
+					{{/if}}
 				</div>
-				<div class="col-lg-8">
+				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 					<h3>Họ và tên: {{data.person.fullName}}</h3>
 					<h4>Ngày sinh: {{data.person.birth}}</h4>
 					<h4>Đời: {{data.person.generation}}</h4>
 					<h4>Thông tin chi tiết:</h4>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu ornare tellus. Phasellus gravida leo dictum sodales faucibus. Maecenas sodales dui vel est luctus tincidunt. Nullam ac cursus mauris. Donec sed eros non velit pharetra rhoncus vel nec mauris.
-						Nulla ultrices felis turpis. Nunc consectetur mi sit amet neque elementum, eu laoreet risus aliquam. Maecenas fermentum commodo tempus. Cras vehicula aliquam sapien auctor convallis. Pellentesque habitant morbi tristique senectus et netus et malesuada
-						fames ac turpis egestas.
-					</p>
+					{{{data.person.information}}}
 
 				</div>
 			</div>
