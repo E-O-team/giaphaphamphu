@@ -1,0 +1,92 @@
+/* Header */
+
+/* Resetting values */
+* {
+  margin: 0px;
+  padding: 0px;
+}
+/* Header */
+
+nav {
+  background-color: rgb(245,212,159);
+  border-bottom: 2px solid orange;
+}
+#logo, .GPTP {
+  margin-left: 3.5%;
+  min-width: 85px;
+  min-height: 85px;
+  max-width: 85px;
+}
+
+/* Navigation Bar */
+.navbar {
+  padding: 0;
+}
+.navbar-nav {
+  min-width: 100%;
+  margin-bottom: 0;
+}
+.navbar-nav a {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: 500;
+  text-decoration: none;
+  color: #312c2c;
+}
+.navbar-nav li {
+  width: 25%;
+  padding:40px;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.navbar-nav li:hover {
+  background-color: rgb(212,169,114);
+}
+.nav-link:hover {
+  color: black;
+}
+
+/* Login */
+.login {
+  display: inline-block;
+  color: #312c2c;
+  width: 40%;
+  text-align: right;
+  margin-top: 0.3%;
+  margin-right: 2%;
+}
+.subLogin {
+  text-align: left;
+  display: inline-block;
+  margin-left: 2%;
+}
+.login button {
+  margin-left: 4px;
+  color: rgb(245,212,159);
+  background-color: #312c2c;
+  border-radius: 3px;
+  border: 1px solid rgb(212,169,114);
+  padding: 3px;
+}
+.navbar-toggler {
+  background-color: #312c2c;
+  margin-right: 2%;
+  color: rgb(245,212,159);
+  padding: 10px 10px 5px 10px;
+}
+/* Responsive */
+@media (max-width:575px) {
+  #logo {
+    margin: auto;
+  }
+  .navbar-nav li {
+    width: 100%;
+  }
+}
+@media (max-width:1186px) {
+  .navbar-nav {
+    width: 80%;
+  }
+}
