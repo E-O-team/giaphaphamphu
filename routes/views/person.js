@@ -56,16 +56,16 @@ exports = module.exports = function(req, res) {
 
 	//Stack's
 	function getFamilyTree ( person ) {
-		if (isNotEmpty(person)){
-			getChildren( person, function( children ) {
+		getChildren( person, function( children ) {
+			if (isNotEmpty(children)){
 		        person.children = children;
 		        for ( var i = 0; i < person.children.length;i++ ) {
 					if (isNotEmpty(person.children[i])){
 						getFamilyTree( person.children[ i ] );
 					}
 		        }
-		    })
-		}
+			}
+	    })
 	}
 
 function isNotEmpty(obj) {
@@ -82,9 +82,6 @@ function isNotEmpty(obj) {
 		q.exec(function(err, person) {
 			locals.data.person = person;
             getFamilyTree(person);
-
-
-			// console.log(person);
 			next(err);
 		});
 	});
