@@ -1,5 +1,36 @@
-<style>
-	
+<style type="text/css">
+	/* tiêu đề mỗi tin khi trỏ chuột */
+	.blog a:hover{
+		font-weight: bold;
+		color: #d4a972;
+		text-decoration: none;
+	}
+	/* tiêu đề mỗi tin */
+	.post a {
+		color: #312c2c;
+	}
+	/* phần khung post cho mỗi tin */
+	.post {
+		overflow: hidden;
+		min-height: 230px;
+		margin: 1%;
+		border: 1px solid #d4a972;
+		border-radius: 6px;
+		padding: 1.5%;
+		margin-bottom: 20px;
+	}
+	/* cỡ chữ cho đoạn tóm tắt */
+	.post p {
+		font-size: 1.3em;
+	}
+	/* Khung để cắt ảnh */
+	.imgFrame {
+		margin-right: 10px;
+		float: left;
+		overflow: hidden;
+		height: 110px;
+		width: 200px;
+	}
 </style>
 
 <div class="container">
@@ -18,9 +49,11 @@
 								{{#if author.name.first}}bởi {{author.name.first}}{{/if}}
 							</p>
 
-							{{#if image}}<img src="{{{cloudinaryUrl image width=160 height=160 crop='fit' }}}" class="img pull-right">{{/if}}
+							<div>
+							{{#if image}}<a href="{{postUrl slug}}"><div class="imgFrame"><img src="{{{cloudinaryUrl image width='200' }}}"></div></a>{{/if}}
 
 							<p>{{{content.brief}}}</p>
+							</div>
 							{{#if content.extended}}
 								<p class="read-more"><a href="{{postUrl slug}}">Đọc thêm</a></p>
 							{{/if}}
@@ -32,7 +65,7 @@
 		<div class="col-sm-4 col-md-3">
 			<h2>Thể Loại</h2>
 			<div style="margin-top: 70px;  " class="list-group">
-				<a href="/blog" class="active list-group-item" style="background-color: rgb(245,212,159);, color:black;">Các Kiểu</a>
+				<a href="/blog" class="active list-group-item" style="background-color: rgb(245,212,159); color:black;">Các Kiểu</a>
 				{{# each data.categories }}
 					<a href="{{categoryUrl key}}" class="false list-group-item">{{name}}</a>
 					{{/each}}
