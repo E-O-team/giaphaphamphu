@@ -24,7 +24,7 @@
 html {
   min-height: 100%;
   position: relative;
-  padding-bottom: 70px;
+  padding-bottom: 100px;
 }
 body {
   background-color: rgb(212,169,114);
@@ -53,6 +53,11 @@ h2,h1,h3,h4,h5,h6,a,p{
 
 button{
     background-color: rgb(245,212,159);
+}
+@media (max-width:530px) {
+  footer img {
+    display: none;
+  }
 }
 
 // body{
@@ -144,8 +149,3 @@ button{
 //      }
 //  }
 //
-//  @media (max-width:530px) {
-//      footer img {
-//          display: none;
-//      }
-//  }
