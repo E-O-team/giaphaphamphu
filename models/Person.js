@@ -16,6 +16,8 @@ Person.add({
     information: { type: Types.Html, wysiwyg: true, height: 150 },
 	image: {type: Types.CloudinaryImage, label: 'Ảnh'},
     generation: {type: Number, label: 'Đời'},
+    cmnd: {type: Number, label: 'Chứng Minh Nhân Dân'},
+    sex: {type: String, label: 'Giới tính', options: 'nam, nữ', default: 'nam'},
 });
 
 Person.register();
