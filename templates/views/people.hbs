@@ -24,6 +24,15 @@
         }
     }
 
+    function person(){
+        var q=document.getElementById('inputField').value
+        q=change_alias(q);
+        q=q.replace(/ /g,"-");
+        var redirect = "/search/" + q;
+        window.location.replace(redirect);
+        return false;
+    }
+
 </script>
 
 <div class='container'>
@@ -34,16 +43,6 @@
         </form>
     </div>
 </div>
-<script>
-    function person(){
-        var q=document.getElementById('inputField').value
-        q=change_alias(q);
-        q=q.replace(/ /g,"-");
-        var redirect = "/search/" + q;
-        window.location.replace(redirect);
-        return false;
-    }
-</script>
 
 <div class='container'>
     {{# each people}}
