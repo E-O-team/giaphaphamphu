@@ -35,6 +35,13 @@
 
 </script>
 
+<style type="text/css">
+  @media (max-width:600px) {
+    .personCard {
+      display: inline-block;
+    }
+  }
+</style>
 <div class='container'>
     <div class="form-group">
         <label>Name</label>
@@ -46,11 +53,11 @@
 
 <div class='container'>
     {{# each people}}
-        <div class='col-md-2 col-lg-2'>
-            <h4><a href="{{personUrl slug}}">{{fullName}}</a></h4>
+        <div class='col-sm-2 personCard'>
+            <h4><a href="{{personUrl slug}}" style="font-weight:bold;">{{fullName}} {{@key}}</a></h4>
             <h4>{{a}}</h4>
             {{# if image}}
-                <img src="{{{cloudinaryUrl image width="60" height="80" }}}" class="thumbnail" />
+                <a href="{{personUrl slug}}"><img src="{{{cloudinaryUrl image width="60" height="80" }}}" class="thumbnail" /></a>
             {{else}}<img src="/public/images/anonimo" />
             {{/if}}
 
