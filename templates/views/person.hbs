@@ -89,7 +89,10 @@
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 					{{#if data.person.image}}
-					<img src="{{cloudinaryUrl data.person.image crop='fit' }}" class="img-responsive"/>
+						<img src="{{cloudinaryUrl data.person.image crop='fit' }}" class="img-responsive"/>
+					{{#else}}
+						<img src="/public/images/anonimo.jpg" class="img-responsive" />
+					{{/else}}
 					{{/if}}
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
