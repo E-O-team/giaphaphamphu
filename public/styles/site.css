@@ -5838,7 +5838,7 @@ button.close {
 html {
   min-height: 100%;
   position: relative;
-  padding-bottom: 70px; }
+  padding-bottom: 100px; }
 
 body {
   background-color: #d4a972; }
@@ -5866,3 +5866,7 @@ h2, h1, h3, h4, h5, h6, a, p {
 
 button {
   background-color: #f5d49f; }
+
+@media (max-width: 530px) {
+  footer img {
+    display: none; } }
