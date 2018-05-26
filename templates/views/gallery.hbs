@@ -68,36 +68,38 @@
 </div>
 <div class="container gallery-container">
 	<!-- if galleries -->
-	{{#if galleries}}
-		{{#each galleries}}
-		<div class="tz-gallery">
-		<h2>{{name}}
-			<div class="pull-right text-muted">Thời gian</div>
-		</h2>
-		<div class="row">
-				{{#if heroImage}}
-				<div>
-					<a class="lightbox" href="{{cloudinaryUrl heroImage}}">
-					<img src="{{cloudinaryUrl heroImage}}" class="img-rounded" alt="Ảnh"/>
-					</a>
-				</div>
-				{{/if}}
-		</div>
-					<div class="row">
-						{{#each images}}
-						<div class="col-sm-6 col-md-3 col-xs-6">
-							<a class="lightbox" href="{{cloudinaryUrl}}">
-							<img src="{{cloudinaryUrl}}" class="img-rounded"/>
-							</a>
-						</div>
-						{{/each}}
+	<div class="jumbotron" style="background-color: rgb(245,212,159);">
+		{{#if galleries}}
+			{{#each galleries}}
+			<div class="tz-gallery">
+			<h2>{{name}}
+				<div class="pull-right text-muted">Thời gian</div>
+			</h2>
+			<div class="row">
+					{{#if heroImage}}
+					<div>
+						<a class="lightbox" href="{{cloudinaryUrl heroImage}}">
+						<img src="{{cloudinaryUrl heroImage}}" class="img-rounded" alt="Ảnh"/>
+						</a>
 					</div>
-		</div>
-		{{/each}}
-	{{else}}
-	<!-- else -->
-	<h3 class="text-muted">Chưa có thư viện ảnh.</h3>
-	{{/if}}
+					{{/if}}
+			</div>
+						<div class="row">
+							{{#each images}}
+							<div class="col-sm-6 col-md-3 col-xs-6">
+								<a class="lightbox" href="{{cloudinaryUrl}}">
+								<img src="{{cloudinaryUrl}}" class="img-rounded"/>
+								</a>
+							</div>
+							{{/each}}
+						</div>
+			</div>
+			{{/each}}
+		{{else}}
+		<!-- else -->
+		<h3 class="text-muted">Chưa có thư viện ảnh.</h3>
+		{{/if}}
+	</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
