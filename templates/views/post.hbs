@@ -4,6 +4,9 @@
 		width: 50%;
 		padding: 0 20px 10px 0;
 	}
+	.post p {
+		text-align: justify;
+	}
 	@media (max-width:600px) {
 		.img-responsive{
 		width:100%;
@@ -17,14 +20,14 @@
 				<article>
 					<header>
 						<h1>{{data.post.title}}</h1>
-						<h5 style="text-align:justify;">
+						<h5>
 							{{{categoryList data.post.categories prefix="Posted in "}}}
 							{{#if author.name.first}}by {{author.name.first}}{{/if}}
 						</h5>
 					</header>
 					<div class="post">
 						{{#if data.post.image}}<img src="{{{cloudinaryUrl data.post.image crop='fit'}}}" class="img-responsive">{{/if}}
-						{{{data.post.content.extended}}}
+						<p>{{{data.post.content.extended}}}</p>
 					</div>
 				</article>
 			</div>
