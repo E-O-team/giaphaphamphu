@@ -5,10 +5,6 @@
 		padding-top: 35px;
 		display: flex;
 	}
-	/* khung chứ đối tượng con+con... */
-  .flex-container > div {
-    padding: 5px;
-  }
 	/* đường thẳng vẻ lên trên khung chứa */
 	.lineUp {
 		border-left: 4px solid black;
@@ -29,6 +25,7 @@
 	}
 	/* mỗi ô đối tượng */
   .card {
+  	width:60px;
   	transition: background-color 0.6s;
 		-webkit-transition: background-color 0.6s;
   	border: 2px solid #f5d49f;
@@ -47,6 +44,7 @@
 	}
 	/* khung chứa ô đối tượng để giúp giãn độ dài, tính toán kẻ đường ngang */
 	.card-wrapper{
+		padding: 5px;
 		flex-grow: 1;
 		position: relative;
 	}
@@ -81,6 +79,14 @@
 		width: 100%;
 		top: -35px;
 		left:0;
+	}
+	@media (max-width:768px) {
+		.card {
+			width: 50px;
+		}
+		.card-wrapper {
+			padding:2px;
+		}
 	}
 </style>
 <!-- Person -->
@@ -124,7 +130,7 @@
 				{{#each data.person.children}}
 					<div class="card-wrapper">
 						<div class="horBorder"></div>
-						<div class="card" style="width:60px">
+						<div class="card">
 							<div class="lineUp">
 							</div>
 							{{#if this.children}}
@@ -147,7 +153,7 @@
 								{{#each this.children}}
 									<div class="card-wrapper">
 										<div class="horBorder"></div>
-										<div class="card" style="width:60px">
+										<div class="card">
 											<div class="lineUp">
 											</div>
 											{{#if this.children}}
@@ -170,7 +176,7 @@
 												{{#each this.children}}
 													<div class="card-wrapper">
 														<div class="horBorder"></div>
-														<div class="card" style="width:60px">
+														<div class="card">
 															<div class="lineUp">
 															</div>
 															{{#if this.children}}
@@ -193,7 +199,7 @@
 																{{#each this.children}}
 																	<div class="card-wrapper">
 																		<div class="horBorder"></div>
-																		<div class="card" style="width:60px">
+																		<div class="card">
 																			<div class="lineUp">
 																			</div>
 																			{{#if this.image}}
