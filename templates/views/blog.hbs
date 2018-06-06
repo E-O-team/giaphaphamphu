@@ -1,89 +1,91 @@
 <style type="text/css">
-    /* tiêu đề mỗi tin khi trỏ chuột */
+body::after {
+	content: "";
+	background: url("/style/images/newsbg.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	opacity: 0.5;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
 
-    .blog a:hover {
-        font-weight: bold;
-        color: #d4a972;
-        text-decoration: none;
-    }
-
-    /* tiêu đề mỗi tin */
-
-    .post a {
-        color: #312c2c;
-    }
-
-    /* phần khung post cho mỗi tin */
-
-    .post {
-        overflow: hidden;
-        min-height: 230px;
-        margin: 1%;
-        border: 1px solid #d4a972;
-        border-radius: 6px;
-        padding: 1.5%;
-        margin-bottom: 20px;
-    }
-
-    /* cỡ chữ cho đoạn tóm tắt */
-
-    .post p {
-        font-size: 1.3em;
-    }
-
-    /* Khung để cắt ảnh */
-
-    .imgFrame {
-        margin-right: 10px;
-        float: left;
-        overflow: hidden;
-        height: 110px;
-        width: 200px;
-    }
+	/* tiêu đề mỗi tin khi trỏ chuột */
+	.blog a:hover{
+		font-weight: bold;
+		color: #d4a972;
+		text-decoration: none;
+	}
+	/* tiêu đề mỗi tin */
+	.post a {
+		color: #312c2c;
+	}
+	/* phần khung post cho mỗi tin */
+	.post {
+		overflow: hidden;
+		min-height: 230px;
+		margin: 1%;
+		border: 1px solid #d4a972;
+		border-radius: 6px;
+		padding: 1.5%;
+		margin-bottom: 20px;
+	}
+	/* cỡ chữ cho đoạn tóm tắt */
+	.post p {
+		font-size: 1.3em;
+	}
+	/* Khung để cắt ảnh */
+	.imgFrame {
+		margin-right: 10px;
+		float: left;
+		overflow: hidden;
+		height: 110px;
+		width: 200px;
+	}
 </style>
 
 <div class="container">
-    <h1>Tin Tức</h1>
+	<h1>Tin Tức</h1>
 </div>
 <div class="container">
-    <div class="row">
-        <div class="col-sm-8 col-md-9">
-            <h4 class="text-weight-normal">Đang hiển thị {{ data.posts.results.length}} bài đăng.</h4>
-            <div class="jumbotron" style="background-color: rgb(245,212,159);">
-                <div class="blog">
-                    {{# each data.posts.results}}
-                        <div data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}" class="post">
-                            <h2><a href="{{postUrl slug}}">{{{title}}}</a></h2>
-                            <p class="lead text-muted" style="text-align:justify;">{{{categoryList categories prefix="Mục "}}}
-                                {{#if author.name.first}}bởi {{author.name.first}}{{/if}}
-                            </p>
+	<div class="row">
+		<div class="col-sm-8 col-md-9">
+			<h4 class="text-weight-normal">Đang hiển thị {{ data.posts.results.length}} bài đăng.</h4>
+			<div class="jumbotron" style="background-color: rgb(245,212,159);">
+				<div class="blog">
+					{{# each data.posts.results}}
+						<div data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}" class="post">
+							<h2><a href="{{postUrl slug}}">{{{title}}}</a></h2>
+							<p class="lead text-muted">{{{categoryList categories prefix="Mục "}}}
+								{{#if author.name.first}}bởi {{author.name.first}}{{/if}}
+							</p>
 
-                            <div>
-                                {{#if image}}
-                                    <a href="{{postUrl slug}}">
-                                        <div class="imgFrame"><img src="{{{cloudinaryUrl image width='200' }}}"></div>
-                                    </a>
-                                {{/if}}
+							<div>
+							{{#if image}}<a href="{{postUrl slug}}"><div class="imgFrame"><img src="{{{cloudinaryUrl image width='200' }}}"></div></a>{{/if}}
 
-                                <p style="text-align:justify;">{{{content.brief}}}</p>
-                            </div>
-                            {{#if content.extended}}
-                                <p class="read-more"><a href="{{postUrl slug}}">Đọc thêm</a></p>
-                            {{/if}}
-                        </div>
-                        {{/each}}
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3">
-            <h2>Thể Loại</h2>
-            <div style="margin-top: 70px;  " class="list-group">
-                <a href="/blog" class="active list-group-item" style="background-color: rgb(245,212,159); color:black;">Các Kiểu</a>
-                {{# each data.categories }}
-                    <a href="{{categoryUrl key}}" class="false list-group-item">{{name}}</a>
-                    {{/each}}
-            </div>
-        </div>
-    </div>
-    {{>pagination}}
+							<p>{{{content.brief}}}</p>
+							</div>
+							{{#if content.extended}}
+								<p class="read-more"><a href="{{postUrl slug}}">Đọc thêm</a></p>
+							{{/if}}
+						</div>
+						{{/each}}
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4 col-md-3">
+			<h2>Thể Loại</h2>
+			<div style="margin-top: 70px;  " class="list-group">
+				<a href="/blog" class="active list-group-item" style="background-color: rgb(245,212,159); color:black;">Các Kiểu</a>
+				{{# each data.categories }}
+					<a href="{{categoryUrl key}}" class="false list-group-item">{{name}}</a>
+					{{/each}}
+			</div>
+		</div>
+	</div>
+	{{>pagination}}
 </div>

@@ -36,6 +36,21 @@
 </script>
 
 <style type="text/css">
+body::after {
+	content: "";
+	background: url("/style/images/phadobg.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	opacity: 0.2;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
+
   .personCard {
       min-height: 188px;
   }
@@ -57,7 +72,7 @@
 </div>
 
 <div class='container'>
-    <div class="row" style="background-color:#f5d49f;margin:auto;border-radius:10px;">
+    <div class="row">
         {{# each people}}
             <div class='col-sm-2 col-xs-3 col-lg-2 col-md-2 personCard'>
                 <h4><a href="{{personUrl slug}}" style="font-weight:bold;">{{fullName}}</a></h4>
