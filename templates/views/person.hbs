@@ -1,228 +1,255 @@
 <style type="text/css">
-/* khung chứa mỗi đối tượng cha + con +... */
-	.flex-container {
-		overflow:auto;
-		padding-top: 35px;
-		display: flex;
-	}
-	/* đường thẳng vẻ lên trên khung chứa */
-	.lineUp {
-		border-left: 4px solid black;
-		position: absolute;
-		top:-42px;
-		right: 0;
-		width: 50%;
-		height: 40px;
-	}
-	/* đường thẳng vẽ xuống dưới khung chứa */
-	.lineDown {
-		border-left: 4px solid black;
-		position: absolute;
-		bottom:-40px;
-		right: 0;
-		width: 50%;
-		height: 40px;
-	}
-	/* mỗi ô đối tượng */
-  .card {
-  	width:60px;
-  	transition: background-color 0.6s;
-		-webkit-transition: background-color 0.6s;
-  	border: 2px solid #f5d49f;
-		border-radius: 3px;
-  	position: relative;
-		margin: auto;
-		margin-bottom: 36px;
-	}
-	/* ô đối tượng khi trỏ vào */
-	.card:hover {
-		background-color: #f5d49f;
-	}
-	/* ảnh trong ô đối tương */
-	.card-img-top{
-		width: 99%;
-	}
-	/* khung chứa ô đối tượng để giúp giãn độ dài, tính toán kẻ đường ngang */
-	.card-wrapper{
-		padding: 5px;
-		flex-grow: 1;
-		position: relative;
-	}
-	/* tên đối tượng */
-	.card-body h5 {
-		font-weight: bold;
-	}
-	/* kẻ đường ngang sang phải cho đối tượng con đầu tiên của 1 đối tượng cha */
-	.flex-container > .card-wrapper:first-child > .horBorder {
-		width: 51%;
-		border-top: 4px solid black;
-		position: absolute;
-		top: -35px;
-		left:50%;
-	}
-	/* kẻ đường ngang sang trái cho đối tượng con đầu tiên của 1 đối tượng cha */
-	.flex-container > .card-wrapper:last-child > .horBorder {
-		width: 50.6%;
-		border-top: 4px solid black;
-		position: absolute;
-		top: -35px;
-		right:50%;
-	}
-	/* nếu chỉ có 1 con thì ko kẻ đường ngang */
-	.flex-container > .card-wrapper:only-child > .horBorder {
-		width: 0;
-	}
-	/* kẻ đường ngang cho các đối tượng con ở giữa */
-	.flex-container > .card-wrapper > .horBorder {
-		border-top: 4px solid black;
-		position: absolute;
-		width: 100%;
-		top: -35px;
-		left:0;
-	}
-	@media (max-width:768px) {
-		.card {
-			width: 50px;
-		}
-		.card-wrapper {
-			padding:2px;
-		}
-	}
+    /* khung chứa mỗi đối tượng cha + con +... */
+
+    .flex-container {
+        overflow: auto;
+        padding-top: 35px;
+        display: flex;
+    }
+
+    /* đường thẳng vẻ lên trên khung chứa */
+
+    .lineUp {
+        border-left: 4px solid black;
+        position: absolute;
+        top: -42px;
+        right: 0;
+        width: 50%;
+        height: 40px;
+    }
+
+    /* đường thẳng vẽ xuống dưới khung chứa */
+
+    .lineDown {
+        border-left: 4px solid black;
+        position: absolute;
+        bottom: -40px;
+        right: 0;
+        width: 50%;
+        height: 40px;
+    }
+
+    /* mỗi ô đối tượng */
+
+    .card {
+        width: 60px;
+        transition: background-color 0.6s;
+        -webkit-transition: background-color 0.6s;
+        border: 2px solid #f5d49f;
+        border-radius: 3px;
+        position: relative;
+        margin: auto;
+        margin-bottom: 36px;
+    }
+
+    /* ô đối tượng khi trỏ vào */
+
+    .card:hover {
+        background-color: #f5d49f;
+    }
+
+    /* ảnh trong ô đối tương */
+
+    .card-img-top {
+        width: 99%;
+    }
+
+    /* khung chứa ô đối tượng để giúp giãn độ dài, tính toán kẻ đường ngang */
+
+    .card-wrapper {
+        padding: 5px;
+        flex-grow: 1;
+        position: relative;
+    }
+
+    /* tên đối tượng */
+
+    .card-body h5 {
+        font-weight: bold;
+    }
+
+    /* kẻ đường ngang sang phải cho đối tượng con đầu tiên của 1 đối tượng cha */
+
+    .flex-container>.card-wrapper:first-child>.horBorder {
+        width: 51%;
+        border-top: 4px solid black;
+        position: absolute;
+        top: -35px;
+        left: 50%;
+    }
+
+    /* kẻ đường ngang sang trái cho đối tượng con đầu tiên của 1 đối tượng cha */
+
+    .flex-container>.card-wrapper:last-child>.horBorder {
+        width: 50.6%;
+        border-top: 4px solid black;
+        position: absolute;
+        top: -35px;
+        right: 50%;
+    }
+
+    /* nếu chỉ có 1 con thì ko kẻ đường ngang */
+
+    .flex-container>.card-wrapper:only-child>.horBorder {
+        width: 0;
+    }
+
+    /* kẻ đường ngang cho các đối tượng con ở giữa */
+
+    .flex-container>.card-wrapper>.horBorder {
+        border-top: 4px solid black;
+        position: absolute;
+        width: 100%;
+        top: -35px;
+        left: 0;
+    }
+
+    @media (max-width:768px) {
+        .card {
+            width: 50px;
+        }
+        .card-wrapper {
+            padding: 2px;
+        }
+    }
 </style>
 <!-- Person -->
 <div class="container">
-		<div class="jumbotron" style="background-color: rgb(245,212,159); padding:10px;">
-			<div class="row">
-				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-					{{#if data.person.image}}
-						<img src="{{cloudinaryUrl data.person.image crop='fit' }}" class="img-responsive"/>
-					{{#else}}
-						<img src="/public/images/anonimo.jpg" class="img-responsive" />
-					{{/else}}
-					{{/if}}
-				</div>
-				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-					<h3>Họ và tên: {{data.person.fullName}}</h3>
-					<h4>Ngày sinh: {{data.person.birth}}</h4>
-					<h4>Ngày mất: {{data.person.death}}</h4>
-					<h4>Giới tính: {{data.person.sex}}</h4>
-					<h4>Tình trạng hôn nhân {{data.person.marriageStatus}}</h4>
-					<h4>Đời: {{data.person.generation}}</h4>
-					<h4>Số điện thoại: {{data.person.phoneNumber}}</h4>
-					<h4>CMND: {{data.person.cmnd}}</h4>
-					<h4>Thông tin chi tiết:</h4>
-					{{{data.person.information}}}
-				</div>
-			</div>
-		</div>
+    <div class="alert alert-danger alert-dismissible fade in" >
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <h6>Nếu không hiển thị phả đồ, hãy Refresh lại trang (Nhấn F5)</h6>
+    </div>
+    <div class="jumbotron" style="background-color: rgb(245,212,159); padding:10px;">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                {{#if data.person.image}}
+                    <img src="{{cloudinaryUrl data.person.image crop='fit' }}" class="img-responsive" />
+                {{#else}}
+                    <img src="/public/images/anonimo.jpg" class="img-responsive" />
+                    {{/else}}
+                {{/if}}
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <h3>Họ và tên: {{data.person.fullName}}</h3>
+                <h4>Ngày sinh: {{data.person.birth}}</h4>
+                <h4>Ngày mất: {{data.person.death}}</h4>
+                <h4>Giới tính: {{data.person.sex}}</h4>
+                <h4>Tình trạng hôn nhân {{data.person.marriageStatus}}</h4>
+                <h4>Đời: {{data.person.generation}}</h4>
+                <h4>Số điện thoại: {{data.person.phoneNumber}}</h4>
+                <h4>CMND: {{data.person.cmnd}}</h4>
+                <h4>Thông tin chi tiết:</h4> {{{data.person.information}}}
+            </div>
+        </div>
+    </div>
 </div>
 
-	<div class="container-fluid" style="position:relative">
-		<div style="position:relative">
-		<h1 class="text-center" style="margin-bottom:36px;"><strong>{{data.person.fullName}}</strong></h1>
+<div class="container-fluid" style="position:relative">
+    <div style="position:relative">
+        <h1 class="text-center" style="margin-bottom:36px;"><strong>{{data.person.fullName}}</strong></h1>
 
-		<!-- Đời 2 -->
-		{{#if data.person.children}}
-		<div class="lineDown"></div>
-		</div>
-			<!-- <canvas id="1-2" width="50" height="80">Trình duyệt không hỗ trợ hình vẽ</canvas> -->
-			<div class="flex-container text-center">
-				{{#each data.person.children}}
-					<div class="card-wrapper">
-						<div class="horBorder"></div>
-						<div class="card">
-							<div class="lineUp">
-							</div>
-							{{#if this.children}}
-							<div class="lineDown">
-							</div>
-							{{/if}}
-							{{#if this.image}}
-								<a href="{{personUrl slug}}"><img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" /></a>
-							{{/if}}
-							<div class="card-body">
-								<a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
-							</div>
-						</div>
+        <!-- Đời 2 -->
+        {{#if data.person.children}}
+            <div class="lineDown"></div>
+    </div>
+    <!-- <canvas id="1-2" width="50" height="80">Trình duyệt không hỗ trợ hình vẽ</canvas> -->
+    <div class="flex-container text-center">
+        {{#each data.person.children}}
+            <div class="card-wrapper">
+                <div class="horBorder"></div>
+                <div class="card">
+                    <div class="lineUp">
+                    </div>
+                    {{#if this.children}}
+                        <div class="lineDown">
+                        </div>
+                    {{/if}}
+                    {{#if this.image}}
+                        <a href="{{personUrl slug}}"><img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" /></a>
+                    {{/if}}
+                    <div class="card-body">
+                        <a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
+                    </div>
+                </div>
 
-						<!-- Đời 3 -->
+                <!-- Đời 3 -->
 
-						{{#if this.children}}
-							<!-- <canvas class="2-3" width="50" height="80">Trình duyệt không hỗ trợ hình vẽ</canvas> -->
-							<div class="flex-container text-center">
-								{{#each this.children}}
-									<div class="card-wrapper">
-										<div class="horBorder"></div>
-										<div class="card">
-											<div class="lineUp">
-											</div>
-											{{#if this.children}}
-											<div class="lineDown">
-											</div>
-											{{/if}}
-											{{#if this.image}}
-												<a href="{{personUrl slug}}"><img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" /></a>
-											{{/if}}
-											<div class="card-body">
-												<a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
-											</div>
-										</div>
+                {{#if this.children}}
+                    <!-- <canvas class="2-3" width="50" height="80">Trình duyệt không hỗ trợ hình vẽ</canvas> -->
+                    <div class="flex-container text-center">
+                        {{#each this.children}}
+                            <div class="card-wrapper">
+                                <div class="horBorder"></div>
+                                <div class="card">
+                                    <div class="lineUp">
+                                    </div>
+                                    {{#if this.children}}
+                                        <div class="lineDown">
+                                        </div>
+                                    {{/if}}
+                                    {{#if this.image}}
+                                        <a href="{{personUrl slug}}"><img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" /></a>
+                                    {{/if}}
+                                    <div class="card-body">
+                                        <a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
+                                    </div>
+                                </div>
 
-										<!-- Đời 4 -->
+                                <!-- Đời 4 -->
 
-										{{#if this.children}}
-											<!-- <canvas class="3-4" width="50" height="80">Trình duyệt không hỗ trợ hình vẽ</canvas> -->
-											<div class="flex-container text-center">
-												{{#each this.children}}
-													<div class="card-wrapper">
-														<div class="horBorder"></div>
-														<div class="card">
-															<div class="lineUp">
-															</div>
-															{{#if this.children}}
-															<div class="lineDown">
-															</div>
-															{{/if}}
-															{{#if this.image}}
-																<a href="{{personUrl slug}}"><img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" /></a>
-															{{/if}}
-															<div class="card-body">
-																<a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
-															</div>
-														</div>
+                                {{#if this.children}}
+                                    <!-- <canvas class="3-4" width="50" height="80">Trình duyệt không hỗ trợ hình vẽ</canvas> -->
+                                    <div class="flex-container text-center">
+                                        {{#each this.children}}
+                                            <div class="card-wrapper">
+                                                <div class="horBorder"></div>
+                                                <div class="card">
+                                                    <div class="lineUp">
+                                                    </div>
+                                                    {{#if this.children}}
+                                                        <div class="lineDown">
+                                                        </div>
+                                                    {{/if}}
+                                                    {{#if this.image}}
+                                                        <a href="{{personUrl slug}}"><img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" /></a>
+                                                    {{/if}}
+                                                    <div class="card-body">
+                                                        <a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
+                                                    </div>
+                                                </div>
 
-														<!-- Đời 5 -->
+                                                <!-- Đời 5 -->
 
-														{{#if this.children}}
-															<!-- <canvas class="4-5" width="50" height="80">Trình duyệt không hỗ trợ hình vẽ</canvas> -->
-															<div class="flex-container text-center">
-																{{#each this.children}}
-																	<div class="card-wrapper">
-																		<div class="horBorder"></div>
-																		<div class="card">
-																			<div class="lineUp">
-																			</div>
-																			{{#if this.image}}
-																				<a href="{{personUrl slug}}"><img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" /></a>
-																			{{/if}}
-																			<div class="card-body">
-																				<a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
-																			</div>
-																		</div>
-																	</div>
-																{{/each}}
-															</div>
-														{{/if}}
-													</div>
-												{{/each}}
-											</div>
-										{{/if}}
-									</div>
-								{{/each}}
-							</div>
-						{{/if}}
-					</div>
-				{{/each}}
-			</div>
-		{{/if}}
-	</div>
+                                                {{#if this.children}}
+                                                    <!-- <canvas class="4-5" width="50" height="80">Trình duyệt không hỗ trợ hình vẽ</canvas> -->
+                                                    <div class="flex-container text-center">
+                                                        {{#each this.children}}
+                                                            <div class="card-wrapper">
+                                                                <div class="horBorder"></div>
+                                                                <div class="card">
+                                                                    <div class="lineUp">
+                                                                    </div>
+                                                                    {{#if this.image}}
+                                                                        <a href="{{personUrl slug}}"><img class="card-img-top" src='{{{cloudinaryUrl image width="60" height="80" }}}' alt="person" /></a>
+                                                                    {{/if}}
+                                                                    <div class="card-body">
+                                                                        <a href="{{personUrl slug}}"><h5>{{this.fullName}}</h5></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {{/each}}
+                                                    </div>
+                                                {{/if}}
+                                            </div>
+                                        {{/each}}
+                                    </div>
+                                {{/if}}
+                            </div>
+                        {{/each}}
+                    </div>
+                {{/if}}
+            </div>
+        {{/each}}
+    </div>
+    {{/if}}
+</div>
