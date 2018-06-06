@@ -3,47 +3,21 @@ exports = module.exports = function(req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 
+	// // keystone.list('Person').model.find().where('fullName', input).exec(function(err, children){})
+	// keystone.list('Person').model.find(function(err, results) {
+	// 	// Do your action here..
+	// 	locals.data.fullName = results;
+	// 	if (results == '') {
+	// 		locals.data.invalid = 'Invalid search';
+	// 	}
+	// 	next(err);
+    //     console.log(results);
+	// });
+
 	//set locals
-	locals.section = 'person';
-	locals.data={
-		people:[]
-	}
+	locals.section = 'people';
 
-	// load people
-	// view.query('people', keystone.list('Person')).paginate({
-	// 	page: req.query.page || 1,
-	// 	perPage: 10,
-	// 	maxPages: 10,
-	// });
-
-
-	// view.on('init', function (next) {
-	//
-	// 	var q = keystone.list('Person').paginate({
-	// 		page: req.query.page || 1,
-	// 		perPage: 10,
-	// 		maxPages: 10,
-	// 	})
-	// 	q.exec(function (err, results) {
-	// 		locals.data.posts = results;
-	// 		next(err);
-	// 	});
-	// });
-
-	view.on('init', function (next) {
-
-		var q = keystone.list('Person').paginate({
-			page: req.query.page || 1,
-			perPage: 10,
-			maxPages: 10,
-
-		})
-
-		q.exec(function (err, results) {
-			locals.data.people = results;
-			next(err);
-		});
-	});
-
+	//load people
+	view.query('people', keystone.list('Person').model.find());
 	view.render('people');
 }
