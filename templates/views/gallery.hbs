@@ -1,52 +1,108 @@
-<style type="text/css">
-	.gallery-image {
-		width: 100%;
-		margin: 10px;
-		cursor: pointer;
-	}
-	body::after {
-		content: "";
-		background: url("/style/images/contactbg.png");
-		background-repeat: no-repeat;
-		background-size: contain;
-		background-position: center;
-		background-attachment: fixed;
-		opacity: 0.1;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		right: 0;
-		position: absolute;
-		z-index: -1;
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+	<link rel="stylesheet" href="gallery-grid.css">
+	<style type="text/css">
+	.container.gallery-container {
+	    color: #35373a;
+	    min-height: 100vh;
+	    border-radius: 20px;
+	    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.06);
 	}
 
-</style>
+	.gallery-container h1 {
+	    text-align: center;
+	    margin-top: 70px;
+	    font-family: 'Droid Sans', sans-serif;
+	    font-weight: bold;
+	}
+
+	.gallery-container p.page-description {
+	    text-align: center;
+	    max-width: 800px;
+	    margin: 25px auto;
+	    color: #888;
+	    font-size: 18px;
+	}
+
+	.tz-gallery {
+	    padding: 40px;
+	}
+
+	.tz-gallery .lightbox img {
+	    width: 100%;
+	    margin-bottom: 30px;
+	    transition: 0.2s ease-in-out;
+	    box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+	}
+
+
+	.tz-gallery .lightbox img:hover {
+	    transform: scale(1.05);
+	    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+	}
+
+	.tz-gallery img {
+	    border-radius: 4px;
+	}
+
+	.baguetteBox-button {
+	    background-color: transparent !important;
+	}
+
+
+	@media(max-width: 768px) {
+	    body {
+	        padding: 0;
+	    }
+
+	    .container.gallery-container {
+	        border-radius: 0;
+	    }
+	}
+	</style>
+</head>
+
 
 <div class="container">
 	<h1>Thư viện ảnh</h1>
 </div>
-<div class="container">
+<div class="container gallery-container">
 	<!-- if galleries -->
-	{{#if galleries}}
-		{{#each galleries}}
-		<h2>{{name}}
-			<div class="pull-right text-muted">Thời gian</div>
-		</h2>
-		<div class="row">
-				{{#if heroImage}}
-					<a href="{{cloudinaryUrl heroImage}}"><img src="{{cloudinaryUrl heroImage}}" class="img-rounded gallery-image" alt="Ảnh"/></a>
-				{{/if}}
-		</div>
-					<div class="row">
-						{{#each images}}
-						<div class="col-xs-6 col-md-3">
-							<a href="{{cloudinaryUrl}}"><img src="{{cloudinaryUrl}}" class="img-rounded gallery-image" alt="Ảnh"/></a>
-						</div>
-						{{/each}}
+	<div class="jumbotron" style="background-color: rgb(245,212,159);">
+		{{#if galleries}}
+			{{#each galleries}}
+			<div class="tz-gallery">
+			<h2>{{name}}
+				<div class="pull-right text-muted">Thời gian</div>
+			</h2>
+			<div class="row">
+					{{#if heroImage}}
+					<div>
+						<a class="lightbox" href="{{cloudinaryUrl heroImage}}">
+						<img src="{{cloudinaryUrl heroImage}}" class="img-rounded" alt="Ảnh"/>
+						</a>
 					</div>
-		{{/each}}
-	{{else}}
-	<!-- else -->
-	<h3 class="text-muted">Chưa có thư viện ảnh.</h3>
-	{{/if}}
+					{{/if}}
+			</div>
+						<div class="row">
+							{{#each images}}
+							<div class="col-sm-6 col-md-3 col-xs-6">
+								<a class="lightbox" href="{{cloudinaryUrl}}">
+								<img src="{{cloudinaryUrl}}" class="img-rounded"/>
+								</a>
+							</div>
+							{{/each}}
+						</div>
+			</div>
+			{{/each}}
+		{{else}}
+		<!-- else -->
+		<h3 class="text-muted">Chưa có thư viện ảnh.</h3>
+		{{/if}}
+	</div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+</script>
