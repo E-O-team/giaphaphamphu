@@ -11,13 +11,17 @@ var Person = new keystone.List('Person', {
 
 Person.add({
     fullName: { type: String, initial:true, required: true,label: 'Họ và tên', index:true,  },
-    birth: {type: Date, label: 'Ngày sinh'},
+    birth: {type: String, label: 'Ngày sinh'},
+    death: {type: String, label: 'Ngày mất'},
+    marriageStatus: {type: String, label: 'Tình Trạng Hôn Nhân' },
     father: {type: Types.Relationship, ref:'Person', label: 'Cha'},
     information: { type: Types.Html, wysiwyg: true, height: 150 },
 	image: {type: Types.CloudinaryImage, label: 'Ảnh'},
-    generation: {type: Number, label: 'Đời'},
-    cmnd: {type: Number, label: 'Chứng Minh Nhân Dân'},
-    sex: {type: String, label: 'Giới tính', options: 'nam, nữ', default: 'nam'},
+    generation: {type: Types.Number, label: 'Đời'},
+    cmnd: {type: Types.Number, label: 'Chứng Minh Nhân Dân'},
+    sex: { type: Types.Select, options: 'nam,nữ' },
+    phoneNumber: {type: Types.Number, label: 'Số điện thoại'},
+
 });
 
 Person.register();
