@@ -1,78 +1,104 @@
-
 <script>
+    const url = require('url');
+
     function change_alias(alias) {
-    var str = alias;
-    str = str.toLowerCase();
-    str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a");
-    str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e");
-    str = str.replace(/ì|í|ị|ỉ|ĩ/g,"i");
-    str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o");
-    str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u");
-    str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y");
-    str = str.replace(/đ/g,"d");
-    str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g," ");
-    str = str.replace(/ + /g," ");
-    str = str.trim();
-    return str;
+        var str = alias;
+        str = str.toLowerCase();
+        str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+        str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+        str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+        str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+        str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+        str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+        str = str.replace(/đ/g, "d");
+        str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g, " ");
+        str = str.replace(/ + /g, " ");
+        str = str.trim();
+        return str;
     }
 
-    function slugify(queryString){
+    function slugify(queryString) {
         for (var i = 0; i < queryString.length; i++) {
-            if (queryString[i] == ' '){
+            if (queryString[i] == ' ') {
                 queryString[i].replace('-');
             }
         }
     }
 
-    function person(){
-        var q=document.getElementById('inputField').value
-        q=change_alias(q);
-        q=q.replace(/ /g,"-");
+    function person() {
+        var q = document.getElementById('inputField').value
+        q = change_alias(q);
+        q = q.replace(/ /g, "-");
         var redirect = "/search/" + q;
         window.location.replace(redirect);
         return false;
     }
 
+    function generation() {
+        var q = document.getElementById('test').value
+        q = change_alias(q);
+        q = q.replace(/ /g, "-");
+        var redirect = "/generation/" + q;
+        window.location.replace(redirect);
+        return false;
+    }
 </script>
 
 <style type="text/css">
-body::after {
-	content: "";
-	background: url("/style/images/phadobg.png");
-	background-repeat: no-repeat;
-	background-size: 150% 120%;
-  background-attachment: fixed;
-	background-position: center;
-	opacity: 0.2;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	position: absolute;
-	z-index: -1;
-}
-
-  .personCard {
-      min-height: 188px;
-  }
-  @media (max-width:600px) {
-    .personCard {
-      min-height: 206.8px;
-      display: inline-block;
+    body::after {
+        content: "";
+        background: url("/style/images/phadobg.png");
+        background-repeat: no-repeat;
+        background-size: 150% 120%;
+        background-attachment: fixed;
+        background-position: center;
+        opacity: 0.2;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;
     }
-  }
+
+    .personCard {
+        min-height: 188px;
+    }
+
+    @media (max-width:600px) {
+        .personCard {
+            min-height: 206.8px;
+            display: inline-block;
+        }
+    }
 </style>
+<!-- search box & sorting -->
 <div class='container'>
     <div class="form-group">
-        <label>Name</label>
         <form class="search-form" onsubmit="return person()">
-            <input id="inputField" class="form-control" type="text" placeholder="Tìm kiếm thành viên">
-            <button type="submit" class="btn btn-primary" style="background-color: rgb(245,212,159); color:black">Gửi</button>
+            <div class="col-lg-3 col-md-3">
+                <input id="inputField" class="form-control" type="text" placeholder="Tìm kiếm thành viên">
+                <button type="submit" class="btn btn-primary" style="background-color: rgb(245,212,159); color:black">Gửi</button>
+                <select id="test" onchange="return generation()" class="form-control">
+                    <option>Đời</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                </select>
+            </div>
         </form>
     </div>
 </div>
 
-<div class='container'>
+<!-- <div class='container'>
     <div class="row">
         {{# each people}}
             <div class='col-sm-2 col-xs-3 col-lg-2 col-md-2 personCard'>
@@ -81,9 +107,28 @@ body::after {
                 {{# if image}}
                     <a href="{{personUrl slug}}">
                     <img src="{{{cloudinaryUrl image width="60" height="80" }}}" class="thumbnail" /></a>
-                {{else}}<img src="/public/images/anonimo" />
+                {{else}}
+                    <a href="{{personUrl slug}}">
+                    <img src="style\images\logo.png" />
                 {{/if}}
             </div>
         {{/each}}
     </div>
+</div> -->
+
+<div class='container'>
+    <div class="row">
+        {{# each data.people.results}}
+            <div class='col-sm-2 col-xs-3 col-lg-2 col-md-2 personCard'>
+                <h4><a href="{{personUrl slug}}" style="font-weight:bold;">{{fullName}}</a></h4>
+                        <h4>{{a}}</h4>
+                        {{# if image}}
+                            <a href="{{personUrl slug}}">
+                    <img src="{{{cloudinaryUrl image width="60" height="80" }}}" class="thumbnail" /></a>
+                            {{else}}<img src="/style/images/phadobg.png" />
+                                {{/if}}
+            </div>
+            {{/each}}
+    </div>
+    {{>paginationPeople}}
 </div>
