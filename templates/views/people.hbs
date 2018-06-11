@@ -1,48 +1,3 @@
-<script>
-    const url = require('url');
-
-    function change_alias(alias) {
-        var str = alias;
-        str = str.toLowerCase();
-        str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
-        str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
-        str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
-        str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
-        str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
-        str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
-        str = str.replace(/đ/g, "d");
-        str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g, " ");
-        str = str.replace(/ + /g, " ");
-        str = str.trim();
-        return str;
-    }
-
-    function slugify(queryString) {
-        for (var i = 0; i < queryString.length; i++) {
-            if (queryString[i] == ' ') {
-                queryString[i].replace('-');
-            }
-        }
-    }
-
-    function person() {
-        var q = document.getElementById('inputField').value
-        q = change_alias(q);
-        q = q.replace(/ /g, "-");
-        var redirect = "/search/" + q;
-        window.location.replace(redirect);
-        return false;
-    }
-
-    function generation() {
-        var q = document.getElementById('test').value
-        q = change_alias(q);
-        q = q.replace(/ /g, "-");
-        var redirect = "/generation/" + q;
-        window.location.replace(redirect);
-        return false;
-    }
-</script>
 
 <style type="text/css">
     body::after {
@@ -72,31 +27,8 @@
         }
     }
 </style>
-<!-- search box & sorting -->
-<div class='container'>
-    <div class="form-group">
-        <form class="search-form" onsubmit="return person()">
-            <div class="col-lg-3 col-md-3">
-                <input id="inputField" class="form-control" type="text" placeholder="Tìm kiếm thành viên">
-                <button type="submit" class="btn btn-primary" style="background-color: rgb(245,212,159); color:black">Gửi</button>
-                <select id="test" onchange="return generation()" class="form-control">
-                    <option>Đời</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                </select>
-            </div>
-        </form>
-    </div>
-</div>
+
+{{>search-filter}}
 
 <!-- <div class='container'>
     <div class="row">

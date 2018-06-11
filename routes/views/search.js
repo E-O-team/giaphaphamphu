@@ -25,7 +25,6 @@ exports = module.exports = function (req, res) {
         })
         q.exec(function (err, results) {
             locals.data.people = results;
-            console.log(locals.data.people);
             next(err);
         });
 
