@@ -43,14 +43,27 @@
         return false;
     }
 </script>
-
+<style type="text/css">
+  .search-box label {
+    display: block;
+  }
+  .search-box #inputField {
+    width: inherit;
+    display: inline-block;
+  }
+</style>
 <!-- search box & sorting -->
-<div class='container'>
+<div class='container search-box'>
     <div class="form-group">
         <form class="search-form" onsubmit="return person()">
-            <div class="col-lg-3 col-md-3">
+          <div class="row">
+            <div class="col-sm-9">
+                <label for="inputField">Tìm Kiếm:</label>
                 <input id="inputField" class="form-control" type="text" placeholder="Tìm kiếm thành viên">
-                <button type="submit" class="btn btn-primary" style="background-color: rgb(245,212,159); color:black">Gửi</button>
+                <button type="submit" class="btn btn-primary pull-right" style="background-color: rgb(245,212,159); color:black">&#x1F50D;</button>
+            </div>
+            <div class="col-sm-3">
+                <label for="test">Lọc:</label>
                 <select id="test" onchange="return generation()" class="form-control">
                     <option>Đời</option>
                     <option value="1">1</option>
@@ -67,5 +80,6 @@
                 </select>
             </div>
         </form>
+      </div>
     </div>
 </div>
