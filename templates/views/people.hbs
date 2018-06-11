@@ -36,8 +36,28 @@
 </script>
 
 <style type="text/css">
+body::after {
+	content: "";
+	background: url("/style/images/phadobg.png");
+	background-repeat: no-repeat;
+	background-size: 150% 120%;
+  background-attachment: fixed;
+	background-position: center;
+	opacity: 0.2;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+  .personCard {
+      min-height: 188px;
+  }
   @media (max-width:600px) {
     .personCard {
+      min-height: 206.8px;
       display: inline-block;
     }
   }

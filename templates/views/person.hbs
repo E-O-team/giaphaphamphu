@@ -5,10 +5,6 @@
 		padding-top: 35px;
 		display: flex;
 	}
-	/* khung chứ đối tượng con+con... */
-  .flex-container > div {
-    padding: 5px;
-  }
 	/* đường thẳng vẻ lên trên khung chứa */
 	.lineUp {
 		border-left: 4px solid black;
@@ -29,6 +25,7 @@
 	}
 	/* mỗi ô đối tượng */
   .card {
+  	width:60px;
   	transition: background-color 0.6s;
 		-webkit-transition: background-color 0.6s;
   	border: 2px solid #f5d49f;
@@ -47,6 +44,7 @@
 	}
 	/* khung chứa ô đối tượng để giúp giãn độ dài, tính toán kẻ đường ngang */
 	.card-wrapper{
+		padding: 5px;
 		flex-grow: 1;
 		position: relative;
 	}
@@ -82,9 +80,21 @@
 		top: -35px;
 		left:0;
 	}
+	@media (max-width:768px) {
+		.card {
+			width: 50px;
+		}
+		.card-wrapper {
+			padding:2px;
+		}
+	}
 </style>
 <!-- Person -->
 <div class="container">
+	<div class="alert alert-danger alert-dismissible fade in">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<h6>Nếu không hiển thị phả đồ, hãy Refresh lại trang (Nhấn F5)</h6>
+	</div>
 		<div class="jumbotron" style="background-color: rgb(245,212,159); padding:10px;">
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -98,8 +108,11 @@
 				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 					<h3>Họ và tên: {{data.person.fullName}}</h3>
 					<h4>Ngày sinh: {{data.person.birth}}</h4>
+					<h4>Ngày mất: {{data.person.death}}</h4>
 					<h4>Giới tính: {{data.person.sex}}</h4>
+					<h4>Tình trạng hôn nhân {{data.person.marriageStatus}}</h4>
 					<h4>Đời: {{data.person.generation}}</h4>
+					<h4>Số điện thoại: {{data.person.phoneNumber}}</h4>
 					<h4>CMND: {{data.person.cmnd}}</h4>
 					<h4>Thông tin chi tiết:</h4>
 					{{{data.person.information}}}
@@ -121,7 +134,7 @@
 				{{#each data.person.children}}
 					<div class="card-wrapper">
 						<div class="horBorder"></div>
-						<div class="card" style="width:60px">
+						<div class="card">
 							<div class="lineUp">
 							</div>
 							{{#if this.children}}
@@ -144,7 +157,7 @@
 								{{#each this.children}}
 									<div class="card-wrapper">
 										<div class="horBorder"></div>
-										<div class="card" style="width:60px">
+										<div class="card">
 											<div class="lineUp">
 											</div>
 											{{#if this.children}}
@@ -167,7 +180,7 @@
 												{{#each this.children}}
 													<div class="card-wrapper">
 														<div class="horBorder"></div>
-														<div class="card" style="width:60px">
+														<div class="card">
 															<div class="lineUp">
 															</div>
 															{{#if this.children}}
@@ -190,7 +203,7 @@
 																{{#each this.children}}
 																	<div class="card-wrapper">
 																		<div class="horBorder"></div>
-																		<div class="card" style="width:60px">
+																		<div class="card">
 																			<div class="lineUp">
 																			</div>
 																			{{#if this.image}}
