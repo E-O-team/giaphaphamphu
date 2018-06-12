@@ -20,22 +20,7 @@
 
 // Add your own site style includes here
 @import "site/layout";
-.navbar-toggle {
-  height: 60px;
-}
-  .navbar-nav > li > a {
-    line-height: 50px;
-  }
-  .navbar-default .navbar-nav > li > a {
-    color : black;
-  }
-  .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-    background-color: #d4a972;
-    font-weight: bold;
-  }
-  .navbar-default .navbar-toggle {
-    border-color: orange;
-  }
+
 html {
   min-height: 100%;
   position: relative;

@@ -1,22 +1,9 @@
-<style type="text/css">
-	.img-responsive{
-		float: left;
-		width: 42%;
-		padding: 0 20px 10px 0;
-	}
-	.post p {
-		text-align: justify;
-	}
-	@media (max-width:600px) {
-		.img-responsive{
-		width:100%;
-	}
-	}
-</style>
 <div class="container">
-	<div class="row" style="background-color:#f5d49f;margin:auto;border-radius:10px;">
-		<div class="col-sm-10 col-sm-offset-1 col-md-10	">
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 			<article>
+				<p><a href="/blog">&larr; back to the blog</a></p>
+				<hr>
 				<header>
 					<h1>{{data.post.title}}</h1>
 					<h5>
@@ -25,8 +12,8 @@
 					</h5>
 				</header>
 				<div class="post">
-					{{#if data.post.image}}<a href="{{{cloudinaryUrl data.post.image crop='fit'}}}"><img src="{{{cloudinaryUrl data.post.image crop='fit'}}}" class="img-responsive img-rounded"></a>{{/if}}
-					<p>{{{data.post.content.extended}}}</p>
+					{{#if data.post.image}}<img src="{{{cloudinaryUrl data.post.image width=750 height=450 crop='fit' }}}" class="img-responsive">{{/if}}
+					{{{data.post.content.extended}}}
 				</div>
 			</article>
 		</div>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <head>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
 	<link rel="stylesheet" href="gallery-grid.css">
@@ -67,11 +68,19 @@
 </head>
 
 
+=======
+<style type="text/css">
+	.gallery-image {
+		padding: 15px;
+	}
+</style>
+>>>>>>> parent of 20b8b8a6... Pulling needed things
 <div class="container">
-	<h1>Thư viện ảnh</h1>
+	<h1>Gallery</h1>
 </div>
 <div class="container gallery-container">
 	<!-- if galleries -->
+<<<<<<< HEAD
 	<div class="jumbotron" style="background-color: rgb(245,212,159);">
 		{{#if galleries}}
 			{{#each galleries}}
@@ -104,6 +113,34 @@
 		<h3 class="text-muted">Chưa có thư viện ảnh.</h3>
 		{{/if}}
 	</div>
+=======
+	{{#if galleries}}
+		{{#each galleries}}
+		<h2>{{name}}
+			<div class="pull-right text-muted">19th May 2014</div>
+		</h2>
+		<div class="row gallery-images">
+				{{#if heroImage}}
+				<div class="col-sm-4 col-md-4 gallery-image">
+					<img src="{{cloudinaryUrl heroImage width='680'}}" class="img-rounded">
+				</div>
+				{{/if}}
+				<div class="col-sm-8 col-md-8">
+					<div class="row">
+						{{#each images}}
+						<div class="col-xs-4 col-sm-4 col-md-3 gallery-image">
+							<img src="{{cloudinaryUrl width='300'}}" class="img-rounded">
+						</div>
+						{{/each}}
+					</div>
+				</div>
+		</div>
+		{{/each}}
+	{{else}}
+	<!-- else -->
+	<h3 class="text-muted">There are no image galleries yet.</h3>
+	{{/if}}
+>>>>>>> parent of 20b8b8a6... Pulling needed things
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>

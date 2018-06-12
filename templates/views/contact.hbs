@@ -11,20 +11,20 @@
 				<input type="hidden" name="action" value="contact">
 				<div class="form-group {{#if validationErrors.name}}has-error{{/if}}">
 					<label>Họ và Tên</label>
-					<input type="text" name="name.full" placeholder="(Bắt buộc)"  class="form-control" value="{{formData.[name.full]}}" autofocus required>
+					<input type="text" name="name.full"  class="form-control" value="{{formData.[name.full]}}">
 				</div>
 				<div class="form-group {{#if validationErrors.email}}has-error{{/if}}">
 					<label>Email</label>
-					<input type="email" name="email" placeholder="(Bắt buộc)" class="form-control" value="{{formData.email}}" required>
+					<input type="email" name="email" class="form-control" value="{{formData.email}}">
 				</div>
 				<div class="form-group">
 					<label>Số Điện Thoại</label>
-					<input type="text" name="phone" placeholder="(Tùy ý)" class="form-control" value="{{formData.phone}}">
+					<input type="text" name="phone" placeholder="(optional)" class="form-control" value="{{formData.phone}}">
 				</div>
 				<div class="form-group {{#if validationErrors.enquiryType}}has-error{{/if}}">
 					<label>Bạn muốn liên lạc với chúng tôi về điều ?</label>
 					<select name="enquiryType" class="form-control">
-						<option value="">(Tùy ý)</option>
+						<option value="">(select one)</option>
 						{{#each enquiryTypes}}
 						<option value="{{value}}">{{label}}</option>
 						{{/each}}
@@ -32,10 +32,10 @@
 				</div>
 				<div class="form-group {{#if validationErrors.message}}has-error{{/if}} ">
 					<label>Lời Nhắn:</label>
-					<textarea name="message" placeholder="Lời Nhắn Của Bạn" rows="4" class="form-control" required>{{formData.message}}</textarea>
+					<textarea name="message" placeholder="Lời Nhắn Của Bạn" rows="4" class="form-control">{{formData.message}}</textarea>
 				</div>
 				<div class="form-actions">
-					<button type="submit" class="btn btn-primary" style="background-color: rgb(245,212,159); color:black">Gửi phản hồi</button>
+					<button type="submit" class="btn btn-primary" style="background-color: rgb(245,212,159); color:black">Send</button>
 				</div>
 			</form>
 			{{/if}}
@@ -43,31 +43,10 @@
 	</div>
 </div>
 <style type="text/css">
-body::after {
-	content: "";
-	background: url("/style/images/contactbg.png");
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-	opacity: 0.15;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	position: absolute;
-	z-index: -1;
-}
   .subCB {
     background-color: rgb(245,212,159);
     padding: 1%;
     margin-bottom: 3%;
     border-radius: 6px;
   }
-	.form-group > textarea {
-		min-width: 100%;
-		min-height: 2.5em;
-		max-height: 400px;
-		max-width: 200%;
-		overflow: auto;
-	}
 </style>
