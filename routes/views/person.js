@@ -84,7 +84,6 @@ function isNotEmpty(obj) {
                 console.log('Error is: ' + err);
                 return;
             }
-			console.log(person.father);
 			locals.data.person = person;
             getFamilyTree(person);
 
