@@ -77,9 +77,13 @@ function isNotEmpty(obj) {
 }
 	view.on('init', function(next) {
 		var q = keystone.list('Person').model.findOne({
-			slug: locals.filters.person
-		});
+			slug: locals.filters.person,
+		}).populate('father');
 		q.exec(function(err, person) {
+			if(err) {
+                console.log('Error is: ' + err);
+                return;
+            }
 			locals.data.person = person;
             getFamilyTree(person);
 
