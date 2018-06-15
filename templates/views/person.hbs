@@ -138,8 +138,8 @@
                 <h4>Đời: {{data.person.generation}}</h4>
                 <h4>Số điện thoại: {{data.person.phoneNumber}}</h4>
                 <h4>CMND: {{data.person.cmnd}}</h4>
-                <h4>Con ông: {{data.person.father.fullName}}</h4>
-                <h4>Sanh đời sau: {{#each data.person.children}} {{fullName}}, {{/each}} </h4>
+                <h4>Con ông: {{#each data.person.father}} <a href="{{personUrl slug}}">{{fullName}}</a> {{/each}}</h4>
+                <h4>Sanh đời sau: {{#each data.person.children}} <a href="{{personUrl slug}}">{{fullName}}</a>, {{/each}} </h4>
                 <h4>Thông tin chi tiết:</h4> {{{data.person.information}}}
             </div>
         </div>
