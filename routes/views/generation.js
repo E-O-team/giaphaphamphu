@@ -39,7 +39,8 @@ exports = module.exports = function (req, res) {
                 return;
             }
             // console.log(results);
-            locals.data.people=results;
+            locals.data=results;
+            console.log(locals.data);
             next(err);
         })
 
