@@ -1,4 +1,30 @@
+<script>
+function phadozoom(){
+  var mapstate = document.getElementById("map").className;
+  if (mapstate == "small"){
+    document.getElementById("map").className = "";
+  } else {
+    document.getElementById("map").className = "small";
+  }
+}
+</script>
 <style type="text/css">
+body::after {
+    content: "";
+    background: url("/style/images/phadobg.png");
+    background-repeat: no-repeat;
+    background-size: 150% 120%;
+    background-attachment: fixed;
+    background-position: center;
+    opacity: 0.1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
     /* khung chứa mỗi đối tượng cha + con +... */
 
     .flex-container {
@@ -74,7 +100,7 @@
         width: 51%;
         border-top: 4px solid black;
         position: absolute;
-        top: -35px;
+        top: -37px;
         left: 50%;
     }
 
@@ -84,7 +110,7 @@
         width: 50.6%;
         border-top: 4px solid black;
         position: absolute;
-        top: -35px;
+        top: -37px;
         right: 50%;
     }
 
@@ -100,16 +126,32 @@
         border-top: 4px solid black;
         position: absolute;
         width: 100%;
-        top: -35px;
+        top: -37px;
         left: 0;
     }
-
-    @media (max-width:768px) {
+    .toggle-small {
+      display: none;
+    }
+    @media (max-width:767px) {
         .card {
             width: 50px;
         }
         .card-wrapper {
             padding: 2px;
+        }
+        .toggle-small {
+          display: inline-block;
+        }
+        .small > .flex-container {
+          height: 330px;
+          -ms-transform: scale(0.38, 0.38); /* IE 9 */
+          -webkit-transform: scale(0.38, 0.38); /* Safari */
+          transform: scale(0.38, 0.38);
+          -webkit-transform-origin: left top;
+          transform-origin: left top;
+        }
+        .small * {
+          overflow: visible;
         }
     }
 </style>
@@ -117,7 +159,7 @@
 <div class="container">
     <div class="alert alert-danger alert-dismissible fade in" >
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <h6>Nếu không hiển thị phả đồ, hãy Refresh lại trang (Nhấn F5)</h6>
+        <h6>Nếu không hiển thị hoặc lỗi phả đồ, xin vui lòng hãy Refresh lại trang (Nhấn F5)</h6>
     </div>
     <div class="jumbotron" style="background-color: rgb(245,212,159); padding:10px;">
         <div class="row">
@@ -146,13 +188,13 @@
     </div>
 </div>
 
-<div class="container-fluid" style="position:relative">
-    <div style="position:relative">
-        <h1 class="text-center" style="margin-bottom:36px;"><strong>{{data.person.fullName}}</strong></h1>
+<div id="map" class="small" style="position:relative">
+    <div class="text-center" style="position:relative">
+      <button class="btn btn-warning toggle-small" onclick="phadozoom()">Phóng to/Thu nhỏ</button>
+        <h1 class="text-center" style="margin:0;"><strong>{{data.person.fullName}}</strong></h1>
 
         <!-- Đời 2 -->
         {{#if data.person.children}}
-            <div class="lineDown"></div>
     </div>
     <!-- <canvas id="1-2" width="50" height="80">Trình duyệt không hỗ trợ hình vẽ</canvas> -->
     <div class="flex-container text-center">

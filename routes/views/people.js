@@ -23,7 +23,7 @@ exports = module.exports = function (req, res) {
 	var locals = res.locals;
 
 	// Init locals
-	locals.section = 'person';
+	locals.section = 'people';
 	locals.data = {
 		people: [],
 	};
