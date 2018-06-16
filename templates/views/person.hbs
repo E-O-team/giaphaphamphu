@@ -1,13 +1,3 @@
-<script>
-function phadozoom(){
-  var mapstate = document.getElementById("map").className;
-  if (mapstate == "small"){
-    document.getElementById("map").className = "";
-  } else {
-    document.getElementById("map").className = "small";
-  }
-}
-</script>
 <style type="text/css">
 body::after {
     content: "";
@@ -28,7 +18,6 @@ body::after {
     /* khung chứa mỗi đối tượng cha + con +... */
 
     .flex-container {
-        overflow: auto;
         padding-top: 35px;
         display: flex;
     }
@@ -132,6 +121,13 @@ body::after {
     .toggle-small {
       display: none;
     }
+    #zoomAdjuster,#perc {
+      display: none;
+    }
+    #zoomAdjuster {
+      width: 52%;
+      margin:0 1%;
+    }
     @media (max-width:767px) {
         .card {
             width: 50px;
@@ -143,7 +139,6 @@ body::after {
           display: inline-block;
         }
         .small > .flex-container {
-          height: 330px;
           -ms-transform: scale(0.38, 0.38); /* IE 9 */
           -webkit-transform: scale(0.38, 0.38); /* Safari */
           transform: scale(0.38, 0.38);
@@ -153,13 +148,16 @@ body::after {
         .small * {
           overflow: visible;
         }
+        #zoomAdjuster,#perc {
+          display: inline-block;
+        }
     }
 </style>
 <!-- Person -->
 <div class="container">
     <div class="alert alert-danger alert-dismissible fade in" >
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <h6>Nếu không hiển thị hoặc lỗi phả đồ, xin vui lòng hãy Refresh lại trang (Nhấn F5)</h6>
+        <h6>Nếu không hiển thị hoặc lỗi phả đồ, xin vui lòng hãy Refresh lại trang (Nhấn phím F5)</h6>
     </div>
     <div class="jumbotron" style="background-color: rgb(245,212,159); padding:10px;">
         <div class="row">
@@ -190,7 +188,13 @@ body::after {
 
 <div id="map" class="small" style="position:relative">
     <div class="text-center" style="position:relative">
-      <button class="btn btn-warning toggle-small" onclick="phadozoom()">Phóng to/Thu nhỏ</button>
+      <!-- <button class="btn btn-warning toggle-small" onclick="phadozoom()">Phóng to/Thu nhỏ</button> -->
+      <div class="container">
+        <h5 class="toggle-small">Kích thước:</h5>
+        <input type="range" min="0" max="100" value="38" onchange="phadozoom(this.value)" id="zoomAdjuster" />
+        <h5 id="perc">38%</h5>
+      </div>
+
         <h1 class="text-center" style="margin:0;"><strong>{{data.person.fullName}}</strong></h1>
 
         <!-- Đời 2 -->
@@ -297,3 +301,19 @@ body::after {
     </div>
     {{/if}}
 </div>
+
+<script>
+var fc = document.getElementsByClassName("flex-container")[0];
+var lastcw = fc.children[fc.children.length-1];
+function phadozoom(valNow){
+  document.getElementsByClassName("flex-container")[0].style.transform ="scale(" + valNow/100 + "," + valNow/100 + ")";
+  document.getElementsByClassName("flex-container")[0].style.msTransform ="scale(" + valNow/100 + "," + valNow/100 + ")";
+  document.getElementsByClassName("flex-container")[0].style.webkitTransform ="scale(" + valNow/100 + "," + valNow/100 + ")";
+  document.getElementById("perc").innerHTML = valNow +"%";
+  if (lastcw.getBoundingClientRect().right >= screen.width){
+    fc.style.overflow = "auto";
+  } else {
+    fc.style.overflow = "visible";
+  }
+}
+</script>
