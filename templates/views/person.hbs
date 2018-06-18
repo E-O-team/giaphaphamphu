@@ -128,6 +128,9 @@ body::after {
       width: 52%;
       margin:0 1%;
     }
+    #first-wrapper {
+      overflow: auto;
+    }
     @media (max-width:767px) {
         .card {
             width: 50px;
@@ -138,7 +141,7 @@ body::after {
         .toggle-small {
           display: inline-block;
         }
-        .small > .flex-container {
+        .small > #first-wrapper > .flex-container {
           -ms-transform: scale(0.38, 0.38); /* IE 9 */
           -webkit-transform: scale(0.38, 0.38); /* Safari */
           transform: scale(0.38, 0.38);
@@ -201,6 +204,7 @@ body::after {
         {{#if data.person.children}}
     </div>
     <!-- <canvas id="1-2" width="50" height="80">Trình duyệt không hỗ trợ hình vẽ</canvas> -->
+    <div id="first-wrapper">
     <div class="flex-container text-center">
         {{#each data.person.children}}
             <div class="card-wrapper">
@@ -300,6 +304,7 @@ body::after {
         {{/each}}
     </div>
     {{/if}}
+  </div>
 </div>
 
 <script>
@@ -310,10 +315,5 @@ function phadozoom(valNow){
   document.getElementsByClassName("flex-container")[0].style.msTransform ="scale(" + valNow/100 + "," + valNow/100 + ")";
   document.getElementsByClassName("flex-container")[0].style.webkitTransform ="scale(" + valNow/100 + "," + valNow/100 + ")";
   document.getElementById("perc").innerHTML = valNow +"%";
-  if (lastcw.getBoundingClientRect().right >= screen.width){
-    fc.style.overflow = "auto";
-  } else {
-    fc.style.overflow = "visible";
-  }
 }
 </script>
