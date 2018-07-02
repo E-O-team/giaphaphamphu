@@ -11,15 +11,26 @@ exports = module.exports = function(req, res) {
 	locals.data = {
 		people: []
 	}
-
+	//
 	var getChildren=function (person, callback) {
 		keystone.list('Person').model.find().where('father', person.id).exec(function(err, children) {
 			callback(children);
 		})
 	}
+
+	// function getChildren(person){
+	// 	new Promise(function (resolve, reject) {
+	// 		keystone.list('Person').model.find().where('father', person.id).exec(function(err, children) {
+	//
+	// 		})
+	// 		resolve(children);
+	// 	})
+	// }
+
 	//OG
-    async function getFamilyTree(person){
+    function getFamilyTree(person){
         getChildren(person, function(children){
+			console.clear()
             person.children=children;
             for (var i=0;i<person.children.length;i++) {
 				!function outer(i){
@@ -36,45 +47,40 @@ exports = module.exports = function(req, res) {
 															if (isNotEmpty(person.children[i].children[j].children[k])){
 																getChildren(person.children[i].children[j].children[k],function(children){
 																	person.children[i].children[j].children[k].children=children;
-																	// console.log(person.children[i].children[j].children[k].children);
+																	console.log(person.children[i].children[j].children[k].children);
 																})
 															}
 														}(k);
 													}
 											})
 										}
-
 									}(j);
 								}
 		                });
 					}
-
 				}(i);
             }
         })
     }
 
-// 	function getChildren(person) {
-//     return new Promise((resolve, reject) => {
-//         keystone.list('Person').model.find().where('father', person.id).exec((err, children) => {
-//             if (err) reject(err);
-//             else resolve(children);
-//         });
-//     });
-// }
 
-// 	async function getFamilyTree(person, maxDepth, depth = 0) {
-//     if (depth >= maxDepth) return person;
-//     const children = (await getChildren(person)).filter(isNotEmpty);
-//     person.children = await Promise.all(
-//         children.map(child => getFamilyTree(child, maxDepth, depth + 1))
-//     );
-//     return person;
-// }
-//
-// getFamilyTree({id: 'rootPersonId'}, 5)
-//   .then(tree => console.log(tree))
-//   .catch(error => console.log(error));
+	// function getChildren(person) {
+	//   return new Promise((resolve, reject) => {
+	//     keystone.list('Person').model.find().where('father', person.id).exec((err, children) => {
+	//       if(err) reject(err);
+	//       else resolve(children);
+	//     });
+	//   });
+	// }
+	//
+	// async function getFamilyTree(person, maxDepth, depth=0) {
+	//   if(depth >= maxDepth) return person;
+	//   const children = (await getChildren(person)).filter(isNotEmpty);
+	//   person.children = await Promise.all(
+	//     children.map(child => getFamilyTree(child, maxDepth, depth + 1))
+	//   );
+	//   return person;
+	// }
 
 	//Stack's
 	// async function getFamilyTree ( person ) {
@@ -89,6 +95,16 @@ exports = module.exports = function(req, res) {
 	// 	    })
 	// 	}
 	// }
+
+	// async function getFamilyTree ( person ) {
+	// 	if (isNotEmpty(person)){
+	// 		getChildren(person).then(function(children){
+	// 			person.children= children;
+	// 		})
+	//
+	// 	}
+	// }
+
 
 function isNotEmpty(obj) {
 	for(var key in obj) {
@@ -107,9 +123,7 @@ function isNotEmpty(obj) {
                 return;
             }
 			locals.data.person = person;
-            getFamilyTree(person);
-
-
+			getFamilyTree(person)
 			// console.log(person);
 			next(err);
 		});
