@@ -20,7 +20,7 @@ keystone.init({
 	'views': 'templates/views',
 	'view engine': '.hbs',
 	'cloudinary config': 'cloudinary://915351483667299:9im4e4B0Xd0060utUk82TN41s14@giaphatocphamphu',
-
+	'mongo': 'mongodb://quangman1404:123456zz@ds347367.mlab.com:47367/giaphaphamphu-keystone',
 	'custom engine': handlebars.create({
 		layoutsDir: 'templates/views/layouts',
 		partialsDir: 'templates/views/partials',
