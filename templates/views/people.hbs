@@ -18,6 +18,22 @@
 
     .personCard {
         min-height: 188px;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-align-content: center;
+        align-content: center;
+    }
+
+    .image{
+        border: 2px solid #f5d49f;
+    }
+
+    .prop_image{
+        border: 2px solid #f5d49f;
+        width: 135;
+        height: 135;
     }
 
     @media (max-width:600px) {
@@ -52,15 +68,32 @@
     <div class="row">
         {{# each data.people.results}}
             <div class='col-sm-2 col-xs-3 col-lg-2 col-md-2 personCard'>
-                <h4><a href="{{personUrl slug}}" style="font-weight:bold;">{{fullName}}</a></h4>
-                        <h4>{{a}}</h4>
-                        {{# if image}}
-                            <a href="{{personUrl slug}}">
-                    <img src="{{{cloudinaryUrl image width="60" height="80" }}}" class="thumbnail" /></a>
-                            {{else}}<img src="/style/images/phadobg.png" />
-                                {{/if}}
+                <h5>
+                    <a
+                    href="{{personUrl slug}}"
+                    style="font-weight:bold"
+                    >
+                        {{fullName}}
+                    </a>
+                </h5>
+                <h5>{{a}}</h5>
+                {{# if image}}
+                    <a href="{{personUrl slug}}">
+                    <img
+                    src="{{{
+                        cloudinaryUrl
+                        image
+                        width="60"
+                        height="80"
+                        crop="thumb"
+                        gravity="face"
+                    }}}"
+                    class="image" /></a>
+                {{else}}
+                    <img src="https://res.cloudinary.com/giaphatocphamphu/image/upload/v1530198856/zcxk8pqaiauzutqyeg0k.jpg" class="prop_image" />
+                {{/if}}
             </div>
-            {{/each}}
+        {{/each}}
     </div>
     {{>paginationPeople}}
 </div>
